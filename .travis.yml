@@ -17,5 +17,4 @@ after_script:
   - php ./vendor/bin/coveralls -v
 
 notifications:
-  irc: "irc.freenode.org#apigility-dev"
   email: false
