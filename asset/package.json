@@ -1,33 +1,33 @@
 {
-    "name": "zf-apigility",
-    "description": "Apigility Assets",
+    "name": "api-tools",
+    "description": "Laminas API Tools Assets",
     "type": "library",
     "version": "0.9.0-beta",
-    "author": "",
-    "contributors": [],
     "license": "BSD-3-Clause",
     "keywords": [
         "api",
-        "apigility",
+        "api-tools",
         "framework",
-        "zf2"
+        "laminas"
     ],
-    "homepage": "http://apigility.org/",
+    "homepage": "https://api-tools.getlaminas.org",
     "support": {
-        "email": "apigility-users@zend.com",
-        "irc": "irc://irc.freenode.net/apigility",
-        "source": "https://github.com/zfcampus/zf-apigility",
-        "issues": "https://github.com/zfcampus/zf-apigility/issues"
+        "docs": "https://api-tools.getlaminas.org/documentation",
+        "issues": "https://github.com/laminas-api-tools/api-tools/issues",
+        "source": "https://github.com/laminas-api-tools/api-tools",
+        "rss": "https://github.com/laminas-api-tools/api-tools/releases.atom",
+        "chat": "https://laminas.dev/chat",
+        "forum": "https://discourse.laminas.dev"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/zfcampus/zf-apigility.git"
+        "url": "https://github.com/laminas-api-tools/api-tools.git"
     },
     "main": "Gruntfile.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "dependencies": {},
+    "dependencies": [],
     "devDependencies": {
         "grunt": "~0.4.1",
         "grunt-autoprefixer": "~0.4.0",

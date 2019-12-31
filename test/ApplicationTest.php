@@ -1,21 +1,23 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014-2016 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility;
+namespace LaminasTest\ApiTools;
 
 use Exception;
+use Laminas\ApiTools\Application;
+use Laminas\EventManager\EventInterface;
+use Laminas\EventManager\EventManager;
+use Laminas\Http\PhpEnvironment;
+use Laminas\Mvc\MvcEvent;
+use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
 use ReflectionProperty;
-use Zend\EventManager\EventInterface;
-use Zend\EventManager\EventManager;
-use Zend\Http\PhpEnvironment;
-use Zend\Mvc\MvcEvent;
-use Zend\ServiceManager\ServiceManager;
-use ZF\Apigility\Application;
 
 class ApplicationTest extends TestCase
 {
@@ -48,7 +50,7 @@ class ApplicationTest extends TestCase
     /**
      * Create and return an Application instance.
      *
-     * Checks to see which version of zend-mvc is present, and uses that to
+     * Checks to see which version of laminas-mvc is present, and uses that to
      * determine how to construct the instance.
      *
      * @param ServiceManager $services

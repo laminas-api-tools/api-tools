@@ -1,20 +1,22 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014-2016 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility;
+namespace Laminas\ApiTools;
 
 use Interop\Container\ContainerInterface;
+use Laminas\Db\Adapter\Adapter;
+use Laminas\Db\Adapter\AdapterInterface;
+use Laminas\Db\ResultSet\HydratingResultSet;
+use Laminas\Db\TableGateway\TableGateway;
+use Laminas\ServiceManager\AbstractFactoryInterface;
+use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use stdClass;
-use Zend\Db\Adapter\Adapter;
-use Zend\Db\Adapter\AdapterInterface;
-use Zend\Db\ResultSet\HydratingResultSet;
-use Zend\Db\TableGateway\TableGateway;
-use Zend\ServiceManager\AbstractFactoryInterface;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\ServiceLocatorInterface;
 
 class TableGatewayAbstractFactory implements AbstractFactoryInterface
 {
@@ -38,11 +40,11 @@ class TableGatewayAbstractFactory implements AbstractFactoryInterface
         }
 
         $config = $container->get('config');
-        if (! isset($config['zf-apigility']['db-connected'])) {
+        if (! isset($config['api-tools']['db-connected'])) {
             return false;
         }
 
-        $config      = $config['zf-apigility']['db-connected'];
+        $config      = $config['api-tools']['db-connected'];
         $gatewayName = substr($requestedName, 0, strlen($requestedName) - 6);
         if (! isset($config[$gatewayName])
             || ! is_array($config[$gatewayName])
@@ -81,14 +83,14 @@ class TableGatewayAbstractFactory implements AbstractFactoryInterface
     {
         $gatewayName       = substr($requestedName, 0, strlen($requestedName) - 6);
         $config            = $container->get('config');
-        $dbConnectedConfig = $config['zf-apigility']['db-connected'][$gatewayName];
+        $dbConnectedConfig = $config['api-tools']['db-connected'][$gatewayName];
 
         $restConfig = $dbConnectedConfig;
-        if (isset($config['zf-rest'])
+        if (isset($config['api-tools-rest'])
             && isset($dbConnectedConfig['controller_service_name'])
-            && isset($config['zf-rest'][$dbConnectedConfig['controller_service_name']])
+            && isset($config['api-tools-rest'][$dbConnectedConfig['controller_service_name']])
         ) {
-            $restConfig = $config['zf-rest'][$dbConnectedConfig['controller_service_name']];
+            $restConfig = $config['api-tools-rest'][$dbConnectedConfig['controller_service_name']];
         }
 
         $table    = $dbConnectedConfig['table_name'];
@@ -144,12 +146,12 @@ class TableGatewayAbstractFactory implements AbstractFactoryInterface
     }
 
     /**
-     * Retrieve a zend-db adapter via provided configuration.
+     * Retrieve a laminas-db adapter via provided configuration.
      *
      * If the configuration defines an `adapter_name` and a matching service
      * is discovered, that will be returned.
      *
-     * If the Adapter service is present, that will be returned (zend-mvc v2).
+     * If the Adapter service is present, that will be returned (laminas-mvc v2).
      *
      * Otherwise, the AdapterInterface service is returned.
      *
@@ -183,7 +185,7 @@ class TableGatewayAbstractFactory implements AbstractFactoryInterface
      *
      * @param array $config
      * @param ContainerInterface $container
-     * @return \Zend\Hydrator\HydratorInterface
+     * @return \Laminas\Hydrator\HydratorInterface
      */
     protected function getHydratorFromConfig(array $config, ContainerInterface $container)
     {

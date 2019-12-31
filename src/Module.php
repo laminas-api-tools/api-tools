@@ -1,16 +1,18 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014-2016 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility;
+namespace Laminas\ApiTools;
 
-use Zend\Mvc\MvcEvent;
-use Zend\View\Model\JsonModel;
-use ZF\ApiProblem\Listener\RenderErrorListener;
-use ZF\Hal\View\HalJsonModel;
-use ZF\MvcAuth\MvcAuthEvent;
+use Laminas\ApiTools\ApiProblem\Listener\RenderErrorListener;
+use Laminas\ApiTools\Hal\View\HalJsonModel;
+use Laminas\ApiTools\MvcAuth\MvcAuthEvent;
+use Laminas\Mvc\MvcEvent;
+use Laminas\View\Model\JsonModel;
 
 class Module
 {

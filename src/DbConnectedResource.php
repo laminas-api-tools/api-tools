@@ -1,15 +1,17 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014-2016 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility;
+namespace Laminas\ApiTools;
 
-use Zend\Db\TableGateway\TableGatewayInterface as TableGateway;
-use Zend\Paginator\Adapter\DbTableGateway as TableGatewayPaginator;
-use ZF\ApiProblem\Exception\DomainException;
-use ZF\Rest\AbstractResourceListener;
+use Laminas\ApiTools\ApiProblem\Exception\DomainException;
+use Laminas\ApiTools\Rest\AbstractResourceListener;
+use Laminas\Db\TableGateway\TableGatewayInterface as TableGateway;
+use Laminas\Paginator\Adapter\DbTableGateway as TableGatewayPaginator;
 
 class DbConnectedResource extends AbstractResourceListener
 {
@@ -112,7 +114,7 @@ class DbConnectedResource extends AbstractResourceListener
      * Fetch a paginated set of resources.
      *
      * @param array|object $data Ignored.
-     * @return \Zend\Paginator\Paginator
+     * @return \Laminas\Paginator\Paginator
      */
     public function fetchAll($data = [])
     {
