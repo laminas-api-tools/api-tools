@@ -1,21 +1,23 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility;
+namespace LaminasTest\ApiTools;
 
+use Laminas\ApiTools\Autoloader;
 use PHPUnit_Framework_TestCase as TestCase;
-use ZF\Apigility\Autoloader;
 
 class AutoloaderTest extends TestCase
 {
     public function classesToAutoload()
     {
         return array(
-            'Foo_Bar'         => array('ZFTest\Apigility\TestAsset\Foo_Bar'),
-            'Foo_Bar\Baz_Bat' => array('ZFTest\Apigility\TestAsset\Foo_Bar\Baz_Bat'),
+            'Foo_Bar'         => array('LaminasTest\ApiTools\TestAsset\Foo_Bar'),
+            'Foo_Bar\Baz_Bat' => array('LaminasTest\ApiTools\TestAsset\Foo_Bar\Baz_Bat'),
         );
     }
 
@@ -26,7 +28,7 @@ class AutoloaderTest extends TestCase
     {
         $autoloader = new Autoloader(array(
             'namespaces' => array(
-                'ZFTest\Apigility\TestAsset' => __DIR__ . '/TestAsset',
+                'LaminasTest\ApiTools\TestAsset' => __DIR__ . '/TestAsset',
             ),
         ));
         $result = $autoloader->autoload($className);
