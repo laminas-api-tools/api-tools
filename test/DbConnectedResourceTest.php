@@ -1,18 +1,20 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014-2016 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility;
+namespace LaminasTest\ApiTools;
 
 use ArrayObject;
+use Laminas\ApiTools\DbConnectedResource;
+use Laminas\Db\ResultSet\AbstractResultSet;
+use Laminas\Db\TableGateway\TableGateway;
+use Laminas\InputFilter\InputFilter;
 use PHPUnit_Framework_TestCase as TestCase;
 use ReflectionObject;
-use Zend\Db\ResultSet\AbstractResultSet;
-use Zend\Db\TableGateway\TableGateway;
-use Zend\InputFilter\InputFilter;
-use ZF\Apigility\DbConnectedResource;
 
 class DbConnectedResourceTest extends TestCase
 {
