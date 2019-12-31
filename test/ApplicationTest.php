@@ -1,17 +1,19 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility;
+namespace LaminasTest\ApiTools;
 
 use Exception;
+use Laminas\ApiTools\Application;
+use Laminas\EventManager\EventManager;
+use Laminas\Mvc\MvcEvent;
 use PHPUnit_Framework_TestCase as TestCase;
 use ReflectionProperty;
-use Zend\EventManager\EventManager;
-use Zend\Mvc\MvcEvent;
-use ZF\Apigility\Application;
 
 class ApplicationTest extends TestCase
 {
@@ -19,14 +21,14 @@ class ApplicationTest extends TestCase
     {
         $events = new EventManager();
 
-        $request = $this->getMockBuilder('Zend\Http\PhpEnvironment\Request')
+        $request = $this->getMockBuilder('Laminas\Http\PhpEnvironment\Request')
             ->disableOriginalConstructor()
             ->getMock();
-        $response = $this->getMockBuilder('Zend\Http\PhpEnvironment\Response')
+        $response = $this->getMockBuilder('Laminas\Http\PhpEnvironment\Response')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $services = $this->getMockBuilder('Zend\ServiceManager\ServiceManager')
+        $services = $this->getMockBuilder('Laminas\ServiceManager\ServiceManager')
             ->disableOriginalConstructor()
             ->getMock();
         $this->services = $services = $this->setUpServices($services, $events, $request, $response);
@@ -70,7 +72,7 @@ class ApplicationTest extends TestCase
     {
         $phpunit  = $this;
         $events   = $this->app->getEventManager();
-        $response = $this->getMockBuilder('Zend\Http\PhpEnvironment\Response')
+        $response = $this->getMockBuilder('Laminas\Http\PhpEnvironment\Response')
             ->disableOriginalConstructor()
             ->getMock();
 
