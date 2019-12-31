@@ -1,14 +1,16 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility;
+namespace Laminas\ApiTools;
 
-use Zend\ServiceManager\AbstractFactoryInterface;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\AbstractFactoryInterface;
+use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
 {
@@ -19,13 +21,13 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
         }
 
         $config = $services->get('Config');
-        if (!isset($config['zf-apigility'])
-            || !isset($config['zf-apigility']['db-connected'])
+        if (!isset($config['api-tools'])
+            || !isset($config['api-tools']['db-connected'])
         ) {
             return false;
         }
 
-        $config = $config['zf-apigility']['db-connected'];
+        $config = $config['api-tools']['db-connected'];
         if (!isset($config[$requestedName])
             || !is_array($config[$requestedName])
             || !$this->isValidConfig($config[$requestedName], $requestedName, $services)
@@ -39,7 +41,7 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
     public function createServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
     {
         $config        = $services->get('Config');
-        $config        = $config['zf-apigility']['db-connected'][$requestedName];
+        $config        = $config['api-tools']['db-connected'][$requestedName];
         $table         = $this->getTableGatewayFromConfig($config, $requestedName, $services);
         $identifier    = $this->getIdentifierFromConfig($config);
         $collection    = $this->getCollectionFromConfig($config, $requestedName);
@@ -96,7 +98,7 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
 
     protected function getCollectionFromConfig(array $config, $requestedName)
     {
-        $collection = isset($config['collection_class']) ? $config['collection_class'] : 'Zend\Paginator\Paginator';
+        $collection = isset($config['collection_class']) ? $config['collection_class'] : 'Laminas\Paginator\Paginator';
         if (!class_exists($collection)) {
             throw new ServiceNotCreatedException(sprintf(
                 'Unable to create instance for service "%s"; collection class "%s" cannot be found',
