@@ -1,7 +1,9 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
 return array(
@@ -14,10 +16,10 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-            'zf-apigility' => array(
-                'type'  => 'Zend\Mvc\Router\Http\Literal',
+            'api-tools' => array(
+                'type'  => 'Laminas\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route' => '/apigility',
+                    'route' => '/api-tools',
                 ),
                 'may_terminate' => false,
             ),
@@ -25,16 +27,16 @@ return array(
     ),
     'service_manager' => array(
         'invokables' => array(
-            'ZF\Apigility\MvcAuth\UnauthenticatedListener' => 'ZF\Apigility\MvcAuth\UnauthenticatedListener',
-            'ZF\Apigility\MvcAuth\UnauthorizedListener' => 'ZF\Apigility\MvcAuth\UnauthorizedListener',
+            'Laminas\ApiTools\MvcAuth\UnauthenticatedListener' => 'Laminas\ApiTools\MvcAuth\UnauthenticatedListener',
+            'Laminas\ApiTools\MvcAuth\UnauthorizedListener' => 'Laminas\ApiTools\MvcAuth\UnauthorizedListener',
         ),
         'abstract_factories' => array(
-            'Zend\Db\Adapter\AdapterAbstractServiceFactory', // so that db-connected works "out-of-the-box"
-            'ZF\Apigility\DbConnectedResourceAbstractFactory',
-            'ZF\Apigility\TableGatewayAbstractFactory',
+            'Laminas\Db\Adapter\AdapterAbstractServiceFactory', // so that db-connected works "out-of-the-box"
+            'Laminas\ApiTools\DbConnectedResourceAbstractFactory',
+            'Laminas\ApiTools\TableGatewayAbstractFactory',
         ),
     ),
-    'zf-apigility' => array(
+    'api-tools' => array(
         'db-connected' => array(
         /**
          * This is sample configuration for a DB-connected service.

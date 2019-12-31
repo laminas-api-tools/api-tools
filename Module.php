@@ -1,24 +1,26 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility;
+namespace Laminas\ApiTools;
 
-use Zend\Mvc\MvcEvent;
-use Zend\View\Model\JsonModel;
-use ZF\Hal\View\HalJsonModel;
-use ZF\MvcAuth\MvcAuthEvent;
+use Laminas\ApiTools\Hal\View\HalJsonModel;
+use Laminas\ApiTools\MvcAuth\MvcAuthEvent;
+use Laminas\Mvc\MvcEvent;
+use Laminas\View\Model\JsonModel;
 
 class Module
 {
     public function getAutoloaderConfig()
     {
         return array(
-            'Zend\Loader\StandardAutoloader' => array(
+            'Laminas\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/ZF/Apigility/',
+                    __NAMESPACE__ => __DIR__ . '/src/Laminas/ApiTools/',
                 ),
             ),
         );
@@ -35,8 +37,8 @@ class Module
         $services = $app->getServiceManager();
         $events   = $app->getEventManager();
 
-        $events->attach(MvcAuthEvent::EVENT_AUTHENTICATION_POST, $services->get('ZF\Apigility\MvcAuth\UnauthenticatedListener'), 100);
-        $events->attach(MvcAuthEvent::EVENT_AUTHORIZATION_POST, $services->get('ZF\Apigility\MvcAuth\UnauthorizedListener'), 100);
+        $events->attach(MvcAuthEvent::EVENT_AUTHENTICATION_POST, $services->get('Laminas\ApiTools\MvcAuth\UnauthenticatedListener'), 100);
+        $events->attach(MvcAuthEvent::EVENT_AUTHORIZATION_POST, $services->get('Laminas\ApiTools\MvcAuth\UnauthorizedListener'), 100);
         $events->attach(MvcEvent::EVENT_RENDER, array($this, 'onRender'), 400);
     }
 
@@ -57,6 +59,6 @@ class Module
         $app      = $e->getApplication();
         $services = $app->getServiceManager();
         $events   = $app->getEventManager();
-        $events->attach($services->get('ZF\ApiProblem\RenderErrorListener'));
+        $events->attach($services->get('Laminas\ApiTools\ApiProblem\RenderErrorListener'));
     }
 }

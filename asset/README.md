@@ -1,9 +1,9 @@
-Apigility Assets
+Laminas API Tools Assets
 ================
 
-This directory contains build tools and assets for the zf-apigility module. CSS
+This directory contains build tools and assets for the api-tools module. CSS
 in this directory is primarily geared towards projects started with the
-zf-apigility-skeleton to ensure that they have some reasonable styling and user
+api-tools-skeleton to ensure that they have some reasonable styling and user
 interface.
 
 Contributing
@@ -25,5 +25,5 @@ At this point, you will have all necessary dependencies.
 ### Making changes
 
 - Run `grunt watch`.
-- Edit and save changes in `zf-apigility/css/main.less`.
+- Edit and save changes in `api-tools/css/main.less`.
 - Check in your changes when done, and crate a pull request.

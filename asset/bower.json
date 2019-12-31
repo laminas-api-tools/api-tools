@@ -1,11 +1,8 @@
 {
-    "name": "zf-apigility",
+    "name": "api-tools",
     "version": "0.9.0dev",
-    "homepage": "http://apigility.org/",
-    "authors": [
-        "Matthew Weier O'Phinney <matthew@zend.com>"
-    ],
-    "description": "Apigility Admin UI",
+    "homepage": "https://api-tools.getlaminas.org",
+    "description": "Laminas API Tools Admin UI",
     "keywords": [
         "API"
     ],
