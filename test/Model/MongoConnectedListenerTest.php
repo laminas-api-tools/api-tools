@@ -1,14 +1,16 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility\Model;
+namespace LaminasTest\ApiTools\Model;
 
+use Laminas\ApiTools\Model\MongoConnectedListener;
 use MongoDB;
 use PHPUnit_Framework_TestCase as TestCase;
-use ZF\Apigility\Model\MongoConnectedListener;
 
 class MongoConnectedListenerTest extends TestCase
 {
@@ -27,7 +29,7 @@ class MongoConnectedListenerTest extends TestCase
         }
 
         $m  = new \MongoClient();
-        static::$mongoDb = $m->selectDB("test_zf_apigility_mongoconnected");
+        static::$mongoDb = $m->selectDB("test_laminas_api-tools_mongoconnected");
         $collection = new \MongoCollection(static::$mongoDb, 'test');
 
         $this->mongoListener = new MongoConnectedListener($collection);

@@ -1,20 +1,22 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility;
+namespace LaminasTest\ApiTools;
 
+use Laminas\ApiTools\DbConnectedResource;
 use PHPUnit_Framework_TestCase as TestCase;
 use ReflectionObject;
-use ZF\Apigility\DbConnectedResource;
 
 class DbConnectedResourceTest extends TestCase
 {
     public function setUp()
     {
-        $this->table = $this->getMockBuilder('Zend\Db\TableGateway\TableGateway')
+        $this->table = $this->getMockBuilder('Laminas\Db\TableGateway\TableGateway')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -36,7 +38,7 @@ class DbConnectedResourceTest extends TestCase
             'baz' => 'QUZ',
         ];
 
-        $filter = $this->getMock('Zend\InputFilter\InputFilter');
+        $filter = $this->getMock('Laminas\InputFilter\InputFilter');
         $filter->expects($this->once())
             ->method('getValues')
             ->will($this->returnValue($filtered));
@@ -51,7 +53,7 @@ class DbConnectedResourceTest extends TestCase
             ->method('getLastInsertValue')
             ->will($this->returnValue('foo'));
 
-        $resultSet = $this->getMock('Zend\Db\ResultSet\AbstractResultSet');
+        $resultSet = $this->getMock('Laminas\Db\ResultSet\AbstractResultSet');
 
         $this->table->expects($this->once())
             ->method('select')
@@ -76,7 +78,7 @@ class DbConnectedResourceTest extends TestCase
             'baz' => 'QUZ',
         ];
 
-        $filter = $this->getMock('Zend\InputFilter\InputFilter');
+        $filter = $this->getMock('Laminas\InputFilter\InputFilter');
         $filter->expects($this->once())
             ->method('getValues')
             ->will($this->returnValue($filtered));
@@ -90,7 +92,7 @@ class DbConnectedResourceTest extends TestCase
                 ['id' => 'foo']
             );
 
-        $resultSet = $this->getMock('Zend\Db\ResultSet\AbstractResultSet');
+        $resultSet = $this->getMock('Laminas\Db\ResultSet\AbstractResultSet');
 
         $this->table->expects($this->once())
             ->method('select')
@@ -115,7 +117,7 @@ class DbConnectedResourceTest extends TestCase
             'baz' => 'QUZ',
         ];
 
-        $filter = $this->getMock('Zend\InputFilter\InputFilter');
+        $filter = $this->getMock('Laminas\InputFilter\InputFilter');
         $filter->expects($this->once())
             ->method('getValues')
             ->will($this->returnValue($filtered));
@@ -129,7 +131,7 @@ class DbConnectedResourceTest extends TestCase
                 ['id' => 'foo']
             );
 
-        $resultSet = $this->getMock('Zend\Db\ResultSet\AbstractResultSet');
+        $resultSet = $this->getMock('Laminas\Db\ResultSet\AbstractResultSet');
 
         $this->table->expects($this->once())
             ->method('select')
