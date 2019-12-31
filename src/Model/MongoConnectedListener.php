@@ -1,18 +1,20 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility\Model;
+namespace Laminas\ApiTools\Model;
 
-use ZF\ApiProblem\ApiProblem;
-use ZF\Rest\AbstractResourceListener;
-use ZF\Rest\Exception\CreationException;
+use Laminas\ApiTools\ApiProblem\ApiProblem;
+use Laminas\ApiTools\Rest\AbstractResourceListener;
+use Laminas\ApiTools\Rest\Exception\CreationException;
 use MongoCollection;
+use MongoCursor;
 use MongoException;
 use MongoId;
-use MongoCursor;
 
 class MongoConnectedListener extends AbstractResourceListener
 {

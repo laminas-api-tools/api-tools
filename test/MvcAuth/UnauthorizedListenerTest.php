@@ -1,20 +1,22 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility\MvcAuth;
+namespace LaminasTest\ApiTools\MvcAuth;
 
-use Zend\Http\Response;
-use Zend\Mvc\MvcEvent;
-use ZF\Apigility\MvcAuth\UnauthorizedListener;
-use ZF\MvcAuth\MvcAuthEvent;
+use Laminas\ApiTools\MvcAuth\MvcAuthEvent;
+use Laminas\ApiTools\MvcAuth\UnauthorizedListener;
+use Laminas\Http\Response;
+use Laminas\Mvc\MvcEvent;
 
 class UnauthorizedListenerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers ZF\Apigility\MvcAuth\UnauthorizedListener::__invoke
+     * @covers Laminas\ApiTools\MvcAuth\UnauthorizedListener::__invoke
      */
     public function testInvokePropagates403ResponseWhenAuthenticationHasFailed()
     {
@@ -27,7 +29,7 @@ class UnauthorizedListenerTest extends \PHPUnit_Framework_TestCase
         $mvcAuthEvent->setIsAuthorized(false);
 
         $invokeResponse = $unauthorizedListener->__invoke($mvcAuthEvent);
-        $this->assertInstanceOf('ZF\ApiProblem\ApiProblemResponse', $invokeResponse);
+        $this->assertInstanceOf('Laminas\ApiTools\ApiProblem\ApiProblemResponse', $invokeResponse);
         $this->assertEquals(403, $invokeResponse->getStatusCode());
         $this->assertEquals('Forbidden', $invokeResponse->getReasonPhrase());
     }

@@ -1,12 +1,14 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility;
+namespace LaminasTest\ApiTools;
 
-use Zend\Loader\AutoloaderFactory;
+use Laminas\Loader\AutoloaderFactory;
 use RuntimeException;
 
 error_reporting(E_ALL | E_STRICT);
@@ -35,21 +37,21 @@ class Bootstrap
             return;
         }
 
-        $zf2Path = getenv('ZF2_PATH') ?: (defined('ZF2_PATH') ? ZF2_PATH : (is_dir($vendorPath . '/ZF2/library') ? $vendorPath . '/ZF2/library' : false));
+        $laminasPath = getenv('LAMINAS_PATH') ?: (defined('LAMINAS_PATH') ? LAMINAS_PATH : (is_dir($vendorPath . '/Laminas/library') ? $vendorPath . '/Laminas/library' : false));
 
-        if (!$zf2Path) {
-            throw new RuntimeException('Unable to load ZF2. Run `php composer.phar install` or define a ZF2_PATH environment variable.');
+        if (!$laminasPath) {
+            throw new RuntimeException('Unable to load Laminas. Run `php composer.phar install` or define a LAMINAS_PATH environment variable.');
         }
 
         if (isset($loader)) {
-            $loader->add('Zend', $zf2Path . '/Zend');
+            $loader->add('Laminas', $laminasPath . '/Laminas');
         } else {
-            include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
+            include $laminasPath . '/Laminas/Loader/AutoloaderFactory.php';
             AutoloaderFactory::factory(array(
-                'Zend\Loader\StandardAutoloader' => array(
-                    'autoregister_zf' => true,
+                'Laminas\Loader\StandardAutoloader' => array(
+                    'autoregister_laminas' => true,
                     'namespaces' => array(
-                        'ZF\Apigility' => __DIR__ . '/../src/',
+                        'Laminas\ApiTools' => __DIR__ . '/../src/',
                         __NAMESPACE__ => __DIR__,
                         'Test' => __DIR__ . '/../vendor/Test/',
                     ),
