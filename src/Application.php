@@ -1,15 +1,17 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility;
+namespace Laminas\ApiTools;
 
 use Exception;
-use Zend\Mvc\Application as MvcApplication;
-use Zend\Mvc\MvcEvent;
-use Zend\Stdlib\ResponseInterface;
+use Laminas\Mvc\Application as MvcApplication;
+use Laminas\Mvc\MvcEvent;
+use Laminas\Stdlib\ResponseInterface;
 
 class Application extends MvcApplication
 {
@@ -18,7 +20,7 @@ class Application extends MvcApplication
      *
      * {@inheritDoc}
      *
-     * This method overrides the behavior of Zend\Mvc\Application to wrap the
+     * This method overrides the behavior of Laminas\Mvc\Application to wrap the
      * trigger of the route event in a try/catch block, allowing us to catch
      * route listener exceptions and trigger the dispatch.error event.
      *
