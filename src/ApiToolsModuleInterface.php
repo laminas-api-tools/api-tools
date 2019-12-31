@@ -6,8 +6,8 @@
  * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace LaminasTest\ApiTools\TestAsset;
+namespace Laminas\ApiTools;
 
-class Foo
+interface ApiToolsModuleInterface
 {
 }
