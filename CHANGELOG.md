@@ -50,7 +50,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- [#200](https://github.com/zfcampus/zf-apigility/pull/200) adds support for PHP 7.1 and 7.2.
+- [zfcampus/zf-apigility#200](https://github.com/zfcampus/zf-apigility/pull/200) adds support for PHP 7.1 and 7.2.
 
 ### Changed
 
@@ -62,22 +62,22 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- [#200](https://github.com/zfcampus/zf-apigility/pull/200) removes support for HHVM.
+- [zfcampus/zf-apigility#200](https://github.com/zfcampus/zf-apigility/pull/200) removes support for HHVM.
 
 ### Fixed
 
-- [#194](https://github.com/zfcampus/zf-apigility/pull/194) fixes an issue within `Zend\Apigility\Application` whereby it was not
+- [zfcampus/zf-apigility#194](https://github.com/zfcampus/zf-apigility/pull/194) fixes an issue within `Laminas\ApiTools\Application` whereby it was not
   clearing the "stop propagation" flag prior to triggering new events.
 
 ## 1.3.0 - 2016-07-28
 
 ### Added
 
-- [#169](https://github.com/zfcampus/zf-apigility/pull/169) adds support for
-  version 3 releases of Zend Framework components, retaining compatibility with
+- [zfcampus/zf-apigility#169](https://github.com/zfcampus/zf-apigility/pull/169) adds support for
+  version 3 releases of Laminas components, retaining compatibility with
   version 2 releases.
-- [#169](https://github.com/zfcampus/zf-apigility/pull/169) adds support in
-  `ZF\Apigility\Application` for handling PHP 7 `Throwable`s (in addition to
+- [zfcampus/zf-apigility#169](https://github.com/zfcampus/zf-apigility/pull/169) adds support in
+  `Laminas\ApiTools\Application` for handling PHP 7 `Throwable`s (in addition to
   standard exceptions).
 
 ### Deprecated
@@ -86,12 +86,12 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- [#169](https://github.com/zfcampus/zf-apigility/pull/169) removes support for
+- [zfcampus/zf-apigility#169](https://github.com/zfcampus/zf-apigility/pull/169) removes support for
   PHP 5.5.
-- [#169](https://github.com/zfcampus/zf-apigility/pull/169) removes the
+- [zfcampus/zf-apigility#169](https://github.com/zfcampus/zf-apigility/pull/169) removes the
   dependency on rwoverdijk/assetmanager. It now *suggests* one or the other of:
   - rwoverdijk/assetmanager `^1.7` (not yet released)
-  - zfcampus/zf-asset-manager `^1.0`
+  - laminas-api-tools/api-tools-asset-manager `^1.0`
 
 ### Fixed
 

@@ -1,21 +1,23 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility;
+namespace LaminasTest\ApiTools;
 
 use Interop\Container\ContainerInterface;
+use Laminas\ApiTools\TableGatewayAbstractFactory;
+use Laminas\Db\Adapter\Adapter as DbAdapter;
+use Laminas\Db\Adapter\AdapterInterface as DbAdapterInterface;
+use Laminas\Db\Adapter\Platform\PlatformInterface as DbPlatformInterface;
+use Laminas\Db\ResultSet\HydratingResultSet;
+use Laminas\Db\TableGateway\TableGateway;
+use Laminas\Hydrator\ClassMethods;
+use Laminas\Hydrator\HydratorPluginManager;
 use PHPUnit\Framework\TestCase;
-use Zend\Db\Adapter\Adapter as DbAdapter;
-use Zend\Db\Adapter\AdapterInterface as DbAdapterInterface;
-use Zend\Db\Adapter\Platform\PlatformInterface as DbPlatformInterface;
-use Zend\Db\ResultSet\HydratingResultSet;
-use Zend\Db\TableGateway\TableGateway;
-use Zend\Hydrator\ClassMethods;
-use Zend\Hydrator\HydratorPluginManager;
-use ZF\Apigility\TableGatewayAbstractFactory;
 
 class TableGatewayAbstractFactoryTest extends TestCase
 {
@@ -38,7 +40,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
-    public function testWillNotCreateServiceIfMissingApigilityConfig()
+    public function testWillNotCreateServiceIfMissingApiToolsConfig()
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn([]);
@@ -48,28 +50,28 @@ class TableGatewayAbstractFactoryTest extends TestCase
     public function testWillNotCreateServiceIfMissingDbConnectedConfigSegment()
     {
         $this->services->has('config')->willReturn(true);
-        $this->services->get('config')->willReturn(['zf-apigility' => []]);
+        $this->services->get('config')->willReturn(['api-tools' => []]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
     public function testWillNotCreateServiceIfMissingServiceSubSegment()
     {
         $this->services->has('config')->willReturn(true);
-        $this->services->get('config')->willReturn(['zf-apigility' => ['db-connected' => []]]);
+        $this->services->get('config')->willReturn(['api-tools' => ['db-connected' => []]]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
     public function testWillNotCreateServiceIfServiceSubSegmentIsInvalid()
     {
         $this->services->has('config')->willReturn(true);
-        $this->services->get('config')->willReturn(['zf-apigility' => ['db-connected' => ['Foo' => 'invalid']]]);
+        $this->services->get('config')->willReturn(['api-tools' => ['db-connected' => ['Foo' => 'invalid']]]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
     public function testWillNotCreateServiceIfServiceSubSegmentDoesNotContainTableName()
     {
         $this->services->has('config')->willReturn(true);
-        $this->services->get('config')->willReturn(['zf-apigility' => ['db-connected' => ['Foo' => []]]]);
+        $this->services->get('config')->willReturn(['api-tools' => ['db-connected' => ['Foo' => []]]]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
@@ -78,7 +80,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')
             ->willReturn([
-                'zf-apigility' => [
+                'api-tools' => [
                     'db-connected' => [
                         'Foo' => [
                             'table_name' => 'test',
@@ -87,7 +89,10 @@ class TableGatewayAbstractFactoryTest extends TestCase
                 ],
             ]);
         $this->services->has(DbAdapterInterface::class)->willReturn(false);
+
+        $this->services->has(\Zend\Db\Adapter\AdapterInterface::class)->willReturn(false);
         $this->services->has(DbAdapter::class)->willReturn(false);
+        $this->services->has(\Zend\Db\Adapter\Adapter::class)->willReturn(false);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
@@ -96,7 +101,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')
             ->willReturn([
-                'zf-apigility' => [
+                'api-tools' => [
                     'db-connected' => [
                         'Foo' => [
                             'table_name'   => 'test',
@@ -115,7 +120,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')
             ->willReturn([
-                'zf-apigility' => [
+                'api-tools' => [
                     'db-connected' => [
                         'Foo' => [
                             'table_name' => 'test',
@@ -125,6 +130,8 @@ class TableGatewayAbstractFactoryTest extends TestCase
             ]);
 
         $this->services->has(DbAdapterInterface::class)->willReturn(false);
+
+        $this->services->has(\Zend\Db\Adapter\AdapterInterface::class)->willReturn(false);
         $this->services->has(DbAdapter::class)->willReturn(true);
         $this->assertTrue($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
@@ -157,7 +164,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->services->get($adapterServiceName)->willReturn($adapter->reveal());
 
         $config = [
-            'zf-apigility' => [
+            'api-tools' => [
                 'db-connected' => [
                     'Foo' => [
                         'controller_service_name' => 'Foo\Controller',
@@ -166,14 +173,14 @@ class TableGatewayAbstractFactoryTest extends TestCase
                     ],
                 ],
             ],
-            'zf-rest' => [
+            'api-tools-rest' => [
                 'Foo\Controller' => [
                     'entity_class' => TestAsset\Foo::class,
                 ],
             ],
         ];
         if ($adapterServiceName !== DbAdapter::class) {
-            $config['zf-apigility']['db-connected']['Foo']['adapter_name'] = $adapterServiceName;
+            $config['api-tools']['db-connected']['Foo']['adapter_name'] = $adapterServiceName;
         }
         $this->services->get('config')->willReturn($config);
 
@@ -190,7 +197,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
     /**
      * @dataProvider validConfig
      */
-    public function testFactoryReturnsTableGatewayInstanceBasedOnConfigurationWithoutZfRest($adapterServiceName)
+    public function testFactoryReturnsTableGatewayInstanceBasedOnConfigurationWithoutLaminasRest($adapterServiceName)
     {
         $hydrator = $this->prophesize(ClassMethods::class)->reveal();
         $hydrators = $this->prophesize(HydratorPluginManager::class);
@@ -207,7 +214,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->services->get($adapterServiceName)->willReturn($adapter);
 
         $config = [
-            'zf-apigility' => [
+            'api-tools' => [
                 'db-connected' => [
                     'Foo' => [
                         'controller_service_name' => 'Foo\Controller',
@@ -219,7 +226,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
             ],
         ];
         if ($adapterServiceName !== DbAdapter::class) {
-            $config['zf-apigility']['db-connected']['Foo']['adapter_name'] = $adapterServiceName;
+            $config['api-tools']['db-connected']['Foo']['adapter_name'] = $adapterServiceName;
         }
         $this->services->get('config')->willReturn($config);
 

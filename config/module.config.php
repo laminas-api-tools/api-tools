@@ -1,13 +1,15 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014-2016 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility;
+namespace Laminas\ApiTools;
 
-use Zend\Db\Adapter\AdapterAbstractServiceFactory as DbAdapterAbstractServiceFactory;
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Laminas\Db\Adapter\AdapterAbstractServiceFactory as DbAdapterAbstractServiceFactory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
     'asset_manager' => [
@@ -19,16 +21,21 @@ return [
     ],
     'router' => [
         'routes' => [
-            'zf-apigility' => [
+            'api-tools' => [
                 'type' => 'literal',
                 'options' => [
-                    'route' => '/apigility',
+                    'route' => '/api-tools',
                 ],
                 'may_terminate' => false,
             ],
         ],
     ],
     'service_manager' => [
+        // Legacy Zend Framework aliases
+        'aliases' => [
+            \ZF\Apigility\MvcAuth\UnauthenticatedListener::class => MvcAuth\UnauthenticatedListener::class,
+            \ZF\Apigility\MvcAuth\UnauthorizedListener::class => MvcAuth\UnauthorizedListener::class,
+        ],
         'factories' => [
             MvcAuth\UnauthenticatedListener::class => InvokableFactory::class,
             MvcAuth\UnauthorizedListener::class => InvokableFactory::class,
@@ -39,7 +46,7 @@ return [
             TableGatewayAbstractFactory::class,
         ],
     ],
-    'zf-apigility' => [
+    'api-tools' => [
         'db-connected' => [
         // @codingStandardsIgnoreStart
         /*

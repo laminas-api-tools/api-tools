@@ -1,20 +1,20 @@
-# ZF Apigility
+# Laminas API Tools
 
-[![Build Status](https://secure.travis-ci.org/zfcampus/zf-apigility.svg?branch=master)](https://secure.travis-ci.org/zfcampus/zf-apigility)
-[![Coverage Status](https://coveralls.io/repos/github/zfcampus/zf-apigility/badge.svg?branch=master)](https://coveralls.io/github/zfcampus/zf-apigility?branch=master)
+[![Build Status](https://travis-ci.org/laminas-api-tools/api-tools.svg?branch=master)](https://travis-ci.org/laminas-api-tools/api-tools)
+[![Coverage Status](https://coveralls.io/repos/github/laminas-api-tools/api-tools/badge.svg?branch=master)](https://coveralls.io/github/laminas-api-tools/api-tools?branch=master)
 
 ## Introduction
 
-Meta-module for Zend Framework combining features from:
+Meta-module for Laminas combining features from:
 
-- zf-api-problem
-- zf-content-negotiation
-- zf-content-validation
-- zf-hal
-- zf-mvc-auth
-- zf-rest
-- zf-rpc
-- zf-versioning
+- api-tools-api-problem
+- api-tools-content-negotiation
+- api-tools-content-validation
+- api-tools-hal
+- api-tools-mvc-auth
+- api-tools-rest
+- api-tools-rpc
+- api-tools-versioning
 
 in order to provide a cohesive solution for exposing web-based APIs.
 
@@ -29,14 +29,14 @@ Please see the [composer.json](composer.json) file.
 Run the following `composer` command:
 
 ```console
-$ composer require zfcampus/zf-apigility
+$ composer require laminas-api-tools/api-tools
 ```
 
 Alternately, manually add the following to your `composer.json`, in the `require` section:
 
 ```javascript
 "require": {
-    "zfcampus/zf-apigility": "^1.3"
+    "laminas-api-tools/api-tools": "^1.3"
 }
 ```
 
@@ -50,49 +50,49 @@ return [
     /* ... */
     'modules' => [
         /* ... */
-        'ZF\Apigility',
+        'Laminas\ApiTools',
     ],
     /* ... */
 ];
 ```
 
-> ### zf-component-installer
+> ### laminas-component-installer
 >
-> If you use [zf-component-installer](https://github.com/zendframework/zf-component-installer),
-> that plugin will install zf-apigility, and all modules it depends on, as a
+> If you use [laminas-component-installer](https://github.com/laminas/laminas-component-installer),
+> that plugin will install api-tools, and all modules it depends on, as a
 > module in your application configuration for you.
 
 ## Assets
 
-If you are using this module along with the [admin](https://github.com/zfcampus/zf-apigility-admin)
-and/or the [welcome screen](https://github.com/zfcampus/zf-apigility-welcome),
+If you are using this module along with the [admin](https://github.com/laminas-api-tools/api-tools-admin)
+and/or the [welcome screen](https://github.com/laminas-api-tools/api-tools-welcome),
 this module contains assets that you will need to make web accessible. For that,
 you have two options:
 
-- [rwoverdijk/assetmanager](https://github.com/rwoverdijk/AssetManager) is a ZF
+- [rwoverdijk/assetmanager](https://github.com/rwoverdijk/AssetManager) is a Laminas
   module that provides advanced capabilities around web asset management, and is
   the original tool used by this module. At its current release (1.6.0),
-  however, it does not support v3 components from Zend Framework. An upcoming
+  however, it does not support v3 components from Laminas. An upcoming
   1.7.0 release will likely support them.
-- [zfcampus/zf-asset-manager](https://github.com/zfcampus/zf-asset-manager) is a
+- [laminas-api-tools/api-tools-asset-manager](https://github.com/laminas-api-tools/api-tools-asset-manager) is a
   Composer plugin that acts during installation and uninstallation of packages,
   copying and removing asset trees as defined using the configuration from
   rwoverdijk/assetmanager. To use this, however, you will need to install the
   plugin *first*, and then this module. (If you have already installed this
-  module, remove it using `composer remove zfcampus/zf-apigility`.)
+  module, remove it using `composer remove laminas-api-tools/api-tools`.)
 
 ## Configuration
 
 ### User Configuration
 
 The top-level configuration key for user configuration of this module is
-`zf-apigility`.
+`api-tools`.
 
 #### db-connected
 
 `db-connected` is an array of resources that can be built via the
-[TableGatewayAbstractFactory](#zfapigilitytablegatewayabstractfactory) and the
-[DbConnectedResourceAbstractFactory](#zfapigilitydbconnectedresourceabstractfactory) when required
+[TableGatewayAbstractFactory](#apitoolstablegatewayabstractfactory) and the
+[DbConnectedResourceAbstractFactory](#apitoolsdbconnectedresourceabstractfactory) when required
 to fulfill the use case of database table-driven resource use cases. The following example
 enumerates all of the required and optional configuration necessary to enable this.
 
@@ -123,14 +123,14 @@ Example:
 
 ### System Configuration
 
-The following configuration is required to ensure the proper functioning of this module in Zend
+The following configuration is required to ensure the proper functioning of this module in Laminas
 Framework applications, and is provided by the module:
 
 ```php
-namespace ZF\Apigility;
+namespace Laminas\ApiTools;
 
-use Zend\Db\Adapter\AdapterAbstractServiceFactory as DbAdapterAbstractServiceFactory;
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Laminas\Db\Adapter\AdapterAbstractServiceFactory as DbAdapterAbstractServiceFactory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
     'asset_manager' => [
@@ -142,10 +142,10 @@ return [
     ],
     'router' => [
         'routes' => [
-            'zf-apigility' => [
+            'api-tools' => [
                 'type'  => 'literal',
                 'options' => [
-                    'route' => '/apigility',
+                    'route' => '/api-tools',
                 ],
                 'may_terminate' => false,
             ],
@@ -165,51 +165,51 @@ return [
 ];
 ```
 
-## ZF Events
+## Laminas Events
 
 ### Listeners
 
-#### ZF\Apigility\MvcAuth\UnauthenticatedListener
+#### Laminas\ApiTools\MvcAuth\UnauthenticatedListener
 
 This listener is attached to `MvcAuthEvent::EVENT_AUTHENTICATION_POST` at priority `100`.  The
-primary purpose fo this listener is to override the `zf-mvc-auth` _unauthenticated_ listener in
+primary purpose fo this listener is to override the `api-tools-mvc-auth` _unauthenticated_ listener in
 order to be able to respond with an API-Problem response (vs. a standard HTTP response) on
 authentication failure.
 
-#### ZF\Apigility\MvcAuth\UnauthorizedListener
+#### Laminas\ApiTools\MvcAuth\UnauthorizedListener
 
 This listener is attached to `MvcAuthEvent::EVENT_AUTHORIZATION_POST` at priority `100`.  The
-primary purpose of this listener is to override the `zf-mvc-auth` _unauthorized_ listener in order
+primary purpose of this listener is to override the `api-tools-mvc-auth` _unauthorized_ listener in order
 to be able to respond with an API-Problem response (vs a standard HTTP response) on authorization
 failure.
 
-#### ZF\Apigility\Module
+#### Laminas\ApiTools\Module
 
 This listener is attached to `MvcEvent::EVENT_RENDER` at priority `400`.  Its purpose is to
-conditionally attach `ZF\ApiProblem\RenderErrorListener` when an `MvcEvent`'s result is a
-`HalJsonModel` or `JsonModel`, ensuring `zf-api-problem` can render a response in situations where
+conditionally attach `Laminas\ApiTools\ApiProblem\RenderErrorListener` when an `MvcEvent`'s result is a
+`HalJsonModel` or `JsonModel`, ensuring `api-tools-api-problem` can render a response in situations where
 a rendering error occurs.
 
-## ZF Services
+## Laminas Services
 
 ### Factories
 
-#### ZF\Apigility\DbConnectedResourceAbstractFactory
+#### Laminas\ApiTools\DbConnectedResourceAbstractFactory
 
-This factory uses the requested name in addition to the `zf-apigility.db-connected` configuration
-in order to produce `ZF\Apigility\DbConnectedResource` based resources.
+This factory uses the requested name in addition to the `api-tools.db-connected` configuration
+in order to produce `Laminas\ApiTools\DbConnectedResource` based resources.
 
-#### ZF\Apigility\TableGatewayAbstractFactory
+#### Laminas\ApiTools\TableGatewayAbstractFactory
 
-This factory uses the requested name in addition to the `zf-apigility.db-connected` configuration
-in order to produce correctly configured `Zend\Db\TableGateway\TableGateway` instances.  These
+This factory uses the requested name in addition to the `api-tools.db-connected` configuration
+in order to produce correctly configured `Laminas\Db\TableGateway\TableGateway` instances.  These
 instances of `TableGateway`s are configured to use the proper `HydratingResultSet` and produce
 the configured entities with each row returned when iterated.
 
 ### Models
 
-#### ZF\Apigility\DbConnectedResource
+#### Laminas\ApiTools\DbConnectedResource
 
 This instance serves as the base class for database connected REST resource classes.  This
-implementation is an extension of `ZF\Rest\AbstractResourceListener` and can be routed to by
-Apigility as a RESTful resource.
+implementation is an extension of `Laminas\ApiTools\Rest\AbstractResourceListener` and can be routed to by
+Laminas API Tools as a RESTful resource.

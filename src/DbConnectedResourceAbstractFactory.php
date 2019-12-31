@@ -1,16 +1,18 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014-2016 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZF\Apigility;
+namespace Laminas\ApiTools;
 
 use Interop\Container\ContainerInterface;
-use Zend\Paginator\Paginator;
-use Zend\ServiceManager\AbstractFactoryInterface;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\Paginator\Paginator;
+use Laminas\ServiceManager\AbstractFactoryInterface;
+use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
 {
@@ -29,11 +31,11 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
 
         $config = $container->get('config');
 
-        if (! isset($config['zf-apigility']['db-connected'])) {
+        if (! isset($config['api-tools']['db-connected'])) {
             return false;
         }
 
-        $config = $config['zf-apigility']['db-connected'];
+        $config = $config['api-tools']['db-connected'];
 
         if (! isset($config[$requestedName])
             || ! is_array($config[$requestedName])
@@ -66,12 +68,12 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
      * @param ContainerInterface $container
      * @param string $requestedName
      * @param null|array $options
-     * @return \ZF\Rest\Resource
+     * @return \Laminas\ApiTools\Rest\Resource
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $config        = $container->get('config');
-        $config        = $config['zf-apigility']['db-connected'][$requestedName];
+        $config        = $config['api-tools']['db-connected'][$requestedName];
         $table         = $this->getTableGatewayFromConfig($config, $requestedName, $container);
         $identifier    = $this->getIdentifierFromConfig($config);
         $collection    = $this->getCollectionFromConfig($config, $requestedName);
@@ -88,7 +90,7 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
      * @param ServiceLocatorInterface $container
      * @param string $name
      * @param string $requestedName
-     * @return \ZF\Rest\Resource
+     * @return \Laminas\ApiTools\Rest\Resource
      */
     public function createServiceWithName(ServiceLocatorInterface $container, $name, $requestedName)
     {
@@ -124,7 +126,7 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
      * @param array $config
      * @param string $requestedName
      * @param ContainerInterface $container
-     * @return \Zend\Db\TableGateway\TableGatewayInterface
+     * @return \Laminas\Db\TableGateway\TableGatewayInterface
      */
     protected function getTableGatewayFromConfig(array $config, $requestedName, ContainerInterface $container)
     {
@@ -165,7 +167,7 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
     /**
      * Retrieve the collection class based on the provided configuration.
      *
-     * Defaults to Zend\Paginator\Paginator.
+     * Defaults to Laminas\Paginator\Paginator.
      *
      * @param array $config
      * @param string $requestedName
@@ -189,7 +191,7 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
     /**
      * Retrieve the resource class based on the provided configuration.
      *
-     * Defaults to ZF\Apigility\DbConnectedResource.
+     * Defaults to Laminas\ApiTools\DbConnectedResource.
      *
      * @param array $config
      * @param string $requestedName

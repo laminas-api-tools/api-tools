@@ -4,7 +4,7 @@
          bootstrap="vendor/autoload.php"
          colors="true">
     <testsuites>
-        <testsuite name="zf-apigility Test Suite">
+        <testsuite name="api-tools Test Suite">
             <directory>./test</directory>
         </testsuite>
     </testsuites>

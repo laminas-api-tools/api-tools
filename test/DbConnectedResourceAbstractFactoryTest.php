@@ -1,16 +1,18 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2014 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
-namespace ZFTest\Apigility;
+namespace LaminasTest\ApiTools;
 
 use Interop\Container\ContainerInterface;
+use Laminas\ApiTools\DbConnectedResource;
+use Laminas\ApiTools\DbConnectedResourceAbstractFactory;
+use Laminas\Db\TableGateway\TableGateway;
 use PHPUnit\Framework\TestCase;
-use Zend\Db\TableGateway\TableGateway;
-use ZF\Apigility\DbConnectedResource;
-use ZF\Apigility\DbConnectedResourceAbstractFactory;
 
 class DbConnectedResourceAbstractFactoryTest extends TestCase
 {
@@ -26,24 +28,24 @@ class DbConnectedResourceAbstractFactoryTest extends TestCase
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo'));
     }
 
-    public function testWillNotCreateServiceIfApigilityConfigMissing()
+    public function testWillNotCreateServiceIfApiToolsConfigMissing()
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn([]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo'));
     }
 
-    public function testWillNotCreateServiceIfApigilityConfigIsNotAnArray()
+    public function testWillNotCreateServiceIfApiToolsConfigIsNotAnArray()
     {
         $this->services->has('config')->willReturn(true);
-        $this->services->get('config')->willReturn(['zf-apigility' => 'invalid']);
+        $this->services->get('config')->willReturn(['api-tools' => 'invalid']);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo'));
     }
 
-    public function testWillNotCreateServiceIfApigilityConfigDoesNotHaveDbConnectedSegment()
+    public function testWillNotCreateServiceIfApiToolsConfigDoesNotHaveDbConnectedSegment()
     {
         $this->services->has('config')->willReturn(true);
-        $this->services->get('config')->willReturn(['zf-apigility' => ['foo' => 'bar']]);
+        $this->services->get('config')->willReturn(['api-tools' => ['foo' => 'bar']]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo'));
     }
 
@@ -51,7 +53,7 @@ class DbConnectedResourceAbstractFactoryTest extends TestCase
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')
-           ->willReturn(['zf-apigility' => [
+           ->willReturn(['api-tools' => [
                 'db-connected' => [
                     'bar' => 'baz',
                 ],
@@ -73,7 +75,7 @@ class DbConnectedResourceAbstractFactoryTest extends TestCase
      */
     public function testWillNotCreateServiceIfDbConnectedSegmentIsInvalidConfiguration($configForDbConnected)
     {
-        $config = ['zf-apigility' => [
+        $config = ['api-tools' => [
             'db-connected' => [
                 'Foo' => $configForDbConnected,
             ],
@@ -103,7 +105,7 @@ class DbConnectedResourceAbstractFactoryTest extends TestCase
      */
     public function testWillCreateServiceIfDbConnectedSegmentIsValid($configForDbConnected, $tableServiceName)
     {
-        $config = ['zf-apigility' => [
+        $config = ['api-tools' => [
             'db-connected' => [
                 'Foo' => $configForDbConnected,
             ],
@@ -124,7 +126,7 @@ class DbConnectedResourceAbstractFactoryTest extends TestCase
         $this->services->has($tableServiceName)->willReturn(true);
         $this->services->get($tableServiceName)->willReturn($tableGateway);
 
-        $config = ['zf-apigility' => [
+        $config = ['api-tools' => [
             'db-connected' => [
                 'Foo' => $configForDbConnected,
             ],
