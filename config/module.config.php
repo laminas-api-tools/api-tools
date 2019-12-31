@@ -1,7 +1,9 @@
 <?php
+
 /**
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @copyright Copyright (c) 2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
+ * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
+ * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
  */
 
 return array(
@@ -14,11 +16,11 @@ return array(
     ),
     'service_manager' => array(
         'abstract_factories' => array(
-            'ZF\Apigility\DbConnectedResourceAbstractFactory',
-            'ZF\Apigility\TableGatewayAbstractFactory',
+            'Laminas\ApiTools\DbConnectedResourceAbstractFactory',
+            'Laminas\ApiTools\TableGatewayAbstractFactory',
         ),
     ),
-    'zf-apigility' => array(
+    'api-tools' => array(
         'db-connected' => array(
         /**
          * This is sample configuration for a DB-connected service.

@@ -1,42 +1,46 @@
 {
-    "name": "zfcampus/zf-apigility",
-    "description": "Apigility module for ZF2",
-    "type": "library",
+    "name": "laminas-api-tools/api-tools",
+    "description": "Laminas API Tools module for Laminas",
     "license": "BSD-3-Clause",
     "keywords": [
+        "laminas",
+        "api-tools",
         "api",
-        "apigility",
-        "framework",
-        "zf2"
+        "framework"
     ],
-    "homepage": "http://apigility.org/",
+    "homepage": "https://api-tools.getlaminas.org",
     "support": {
-        "email": "apigility-users@zend.com",
-        "irc": "irc://irc.freenode.net/apigility",
-        "source": "https://github.com/zfcampus/zf-apigility",
-        "issues": "https://github.com/zfcampus/zf-apigility/issues"
+        "docs": "https://api-tools.getlaminas.org/documentation",
+        "issues": "https://github.com/laminas-api-tools/api-tools/issues",
+        "source": "https://github.com/laminas-api-tools/api-tools",
+        "rss": "https://github.com/laminas-api-tools/api-tools/releases.atom",
+        "chat": "https://laminas.dev/chat",
+        "forum": "https://discourse.laminas.dev"
     },
-    "minimum-stability": "dev",
-    "repositories": [
-        { "type": "composer", "url": "https://packages.zendframework.com/" }
-    ],
+    "config": {
+        "sort-packages": true
+    },
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zendframework": "dev-develop",
-        "zfcampus/zf-rpc": "dev-master",
-        "zfcampus/zf-content-negotiation": "dev-master",
-        "zfcampus/zf-versioning": "dev-master",
-        "zfcampus/zf-rest": "dev-master",
-        "zfcampus/zf-api-problem": "dev-master",
-        "zfcampus/zf-hal": "dev-master"
+        "laminas-api-tools/api-tools-api-problem": "dev-master",
+        "laminas-api-tools/api-tools-content-negotiation": "dev-master",
+        "laminas-api-tools/api-tools-hal": "dev-master",
+        "laminas-api-tools/api-tools-rest": "dev-master",
+        "laminas-api-tools/api-tools-rpc": "dev-master",
+        "laminas-api-tools/api-tools-versioning": "dev-master",
+        "laminas/laminas": "dev-develop",
+        "laminas/laminas-zendframework-bridge": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
         "psr-0": {
-            "ZF\\Apigility\\": "src/",
-            "ZFTest\\": "test/"
+            "Laminas\\ApiTools\\": "src/",
+            "LaminasTest\\ApiTools\\": "test/"
         }
+    },
+    "replace": {
+        "zfcampus/zf-apigility": "self.version"
     }
 }
