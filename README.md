@@ -1,19 +1,19 @@
-Apigility
+Laminas API Tools
 =========
 
-Meta- Zend Framework 2 module combining features from:
+Meta- Laminas module combining features from:
 
-- zf-api-problem
-- zf-hal
-- zf-content-negotiation
-- zf-versioning
-- zf-rest
-- zf-rpc
+- api-tools-api-problem
+- api-tools-hal
+- api-tools-content-negotiation
+- api-tools-versioning
+- api-tools-rest
+- api-tools-rpc
 
 in order to provide a cohesive solution for exposing web-based APIs.
 
 Also features database and Mongo API generation for the data connected part of
-the [Apigility](http://www.apigility.org) project.
+the [Laminas API Tools](http://www.api-tools.getlaminas.org) project.
 
 
 Release note
