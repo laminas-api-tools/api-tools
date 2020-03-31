@@ -1,5 +1,5 @@
 Laminas API Tools Assets
-================
+========================
 
 This directory contains build tools and assets for the api-tools module. CSS
 in this directory is primarily geared towards projects started with the
