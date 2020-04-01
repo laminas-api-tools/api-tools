@@ -24,7 +24,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
-## 1.4.1 - TBD
+## 1.4.1 - 2020-04-01
 
 ### Added
 
@@ -44,7 +44,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- Provides fixes related to [security advisory LP-2020-01](https://getlaminas.org/security/advisory/LP-2020-01).
 
 ## 1.4.0 - 2018-05-03
 
