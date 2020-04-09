@@ -243,6 +243,12 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->assertAttributeInstanceOf(TestAsset\Bar::class, 'objectPrototype', $resultSet);
     }
 
+    /**
+     * Simple check whether we should use ClassMethodsHydrator from laminas-hydrator 3
+     * as ClassMethods from < 3.0.0 is deprecated and triggers an E_USER_DEPRECATED error
+     *
+     * @return string
+     */
     private function getClassMethodsHydratorClassName()
     {
         if (class_exists(ClassMethodsHydrator::class)) {
