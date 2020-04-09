@@ -18,6 +18,7 @@ use Laminas\Db\TableGateway\TableGateway;
 use Laminas\Hydrator\ClassMethods;
 use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\HydratorPluginManager;
+use phpDocumentor\Reflection\Types\String_;
 use PHPUnit\Framework\TestCase;
 
 class TableGatewayAbstractFactoryTest extends TestCase
@@ -150,11 +151,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
      */
     public function testFactoryReturnsTableGatewayInstanceBasedOnConfiguration($adapterServiceName)
     {
-        if (class_exists(ClassMethodsHydrator::class)) {
-            $hydrator = $this->prophesize(ClassMethodsHydrator::class)->reveal();
-        } else {
-            $hydrator = $this->prophesize(ClassMethods::class)->reveal();
-        }
+        $hydrator = $this->prophesize($this->getClassMethodsHydratorClassName())->reveal();
 
         $hydrators = $this->prophesize(HydratorPluginManager::class);
         $hydrators->get('ClassMethods')->willReturn($hydrator);
@@ -205,11 +202,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
      */
     public function testFactoryReturnsTableGatewayInstanceBasedOnConfigurationWithoutLaminasRest($adapterServiceName)
     {
-        if (class_exists(ClassMethodsHydrator::class)) {
-            $hydrator = $this->prophesize(ClassMethodsHydrator::class)->reveal();
-        } else {
-            $hydrator = $this->prophesize(ClassMethods::class)->reveal();
-        }
+        $hydrator = $this->prophesize($this->getClassMethodsHydratorClassName())->reveal();
 
         $hydrators = $this->prophesize(HydratorPluginManager::class);
         $hydrators->get('ClassMethods')->willReturn($hydrator);
@@ -247,13 +240,16 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->assertSame($adapter->reveal(), $gateway->getAdapter());
         $resultSet = $gateway->getResultSetPrototype();
         $this->assertInstanceOf(HydratingResultSet::class, $resultSet);
+        $this->assertInstanceOf($this->getClassMethodsHydratorClassName(), $resultSet->getHydrator());
+        $this->assertAttributeInstanceOf(TestAsset\Bar::class, 'objectPrototype', $resultSet);
+    }
 
+    private function getClassMethodsHydratorClassName()
+    {
         if (class_exists(ClassMethodsHydrator::class)) {
-            $this->assertInstanceOf(ClassMethodsHydrator::class, $resultSet->getHydrator());
-        } else {
-            $this->assertInstanceOf(ClassMethods::class, $resultSet->getHydrator());
+            return ClassMethodsHydrator::class;
         }
 
-        $this->assertAttributeInstanceOf(TestAsset\Bar::class, 'objectPrototype', $resultSet);
+        return ClassMethods::class;
     }
 }
