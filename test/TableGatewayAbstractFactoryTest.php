@@ -18,7 +18,6 @@ use Laminas\Db\TableGateway\TableGateway;
 use Laminas\Hydrator\ClassMethods;
 use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\HydratorPluginManager;
-use phpDocumentor\Reflection\Types\String_;
 use PHPUnit\Framework\TestCase;
 
 class TableGatewayAbstractFactoryTest extends TestCase
