@@ -16,6 +16,7 @@ use Laminas\Db\Adapter\Platform\PlatformInterface as DbPlatformInterface;
 use Laminas\Db\ResultSet\HydratingResultSet;
 use Laminas\Db\TableGateway\TableGateway;
 use Laminas\Hydrator\ClassMethods;
+use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\HydratorPluginManager;
 use PHPUnit\Framework\TestCase;
 
@@ -149,7 +150,8 @@ class TableGatewayAbstractFactoryTest extends TestCase
      */
     public function testFactoryReturnsTableGatewayInstanceBasedOnConfiguration($adapterServiceName)
     {
-        $hydrator = $this->prophesize(ClassMethods::class)->reveal();
+        $hydrator = $this->prophesize($this->getClassMethodsHydratorClassName())->reveal();
+
         $hydrators = $this->prophesize(HydratorPluginManager::class);
         $hydrators->get('ClassMethods')->willReturn($hydrator);
         $this->services->get('HydratorManager')->willReturn($hydrators->reveal());
@@ -199,7 +201,8 @@ class TableGatewayAbstractFactoryTest extends TestCase
      */
     public function testFactoryReturnsTableGatewayInstanceBasedOnConfigurationWithoutLaminasRest($adapterServiceName)
     {
-        $hydrator = $this->prophesize(ClassMethods::class)->reveal();
+        $hydrator = $this->prophesize($this->getClassMethodsHydratorClassName())->reveal();
+
         $hydrators = $this->prophesize(HydratorPluginManager::class);
         $hydrators->get('ClassMethods')->willReturn($hydrator);
         $this->services->get('HydratorManager')->willReturn($hydrators->reveal());
@@ -236,7 +239,22 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->assertSame($adapter->reveal(), $gateway->getAdapter());
         $resultSet = $gateway->getResultSetPrototype();
         $this->assertInstanceOf(HydratingResultSet::class, $resultSet);
-        $this->assertInstanceOf(ClassMethods::class, $resultSet->getHydrator());
+        $this->assertInstanceOf($this->getClassMethodsHydratorClassName(), $resultSet->getHydrator());
         $this->assertAttributeInstanceOf(TestAsset\Bar::class, 'objectPrototype', $resultSet);
+    }
+
+    /**
+     * Simple check whether we should use ClassMethodsHydrator from laminas-hydrator 3
+     * as ClassMethods from < 3.0.0 is deprecated and triggers an E_USER_DEPRECATED error
+     *
+     * @return string
+     */
+    private function getClassMethodsHydratorClassName()
+    {
+        if (class_exists(ClassMethodsHydrator::class)) {
+            return ClassMethodsHydrator::class;
+        }
+
+        return ClassMethods::class;
     }
 }
