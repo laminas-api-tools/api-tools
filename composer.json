@@ -21,10 +21,6 @@
         "sort-packages": true
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.4.x-dev",
-            "dev-develop": "1.5.x-dev"
-        },
         "laminas": {
             "module": "Laminas\\ApiTools"
         }
