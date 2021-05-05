@@ -13,6 +13,7 @@ use function class_exists;
 
 class AutoloaderTest extends TestCase
 {
+    /** @psalm-return array<string, array{0: class-string}> */
     public function classesToAutoload(): array
     {
         return [

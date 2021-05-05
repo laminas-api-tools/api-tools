@@ -10,16 +10,23 @@ use Laminas\Db\ResultSet\AbstractResultSet;
 use Laminas\Db\TableGateway\TableGateway;
 use Laminas\InputFilter\InputFilter;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
+use ReflectionException;
 use ReflectionObject;
 
 class DbConnectedResourceTest extends TestCase
 {
-    protected function setUp()
+    use ProphecyTrait;
+
+    protected function setUp(): void
     {
         $this->table    = $this->prophesize(TableGateway::class);
         $this->resource = new DbConnectedResource($this->table->reveal(), 'id', ArrayObject::class);
     }
 
+    /**
+     * @throws ReflectionException
+     */
     protected function setInputFilter(
         DbConnectedResource $resource,
         InputFilter $inputFilter

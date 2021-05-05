@@ -12,13 +12,17 @@ use Laminas\Http\PhpEnvironment;
 use Laminas\Mvc\MvcEvent;
 use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
+use ReflectionException;
 use ReflectionMethod;
 use ReflectionProperty;
 
 class ApplicationTest extends TestCase
 {
-    protected function setUp()
+    use ProphecyTrait;
+
+    protected function setUp(): void
     {
         $events = new EventManager();
 
@@ -86,6 +90,7 @@ class ApplicationTest extends TestCase
     /**
      * @param ObjectProphecy&PhpEnvironment\Request $request
      * @param ObjectProphecy&PhpEnvironment\Response $response
+     * @throws ReflectionException
      */
     public function setUpMvcEvent(Application $app, $request, $response): Application
     {
