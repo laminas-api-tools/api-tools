@@ -1,7 +1,6 @@
 {
     "name": "laminas-api-tools/api-tools",
     "description": "Laminas API Tools module for Laminas",
-    "license": "BSD-3-Clause",
     "keywords": [
         "laminas",
         "api-tools",
@@ -9,22 +8,7 @@
         "framework"
     ],
     "homepage": "https://api-tools.getlaminas.org",
-    "support": {
-        "docs": "https://api-tools.getlaminas.org/documentation",
-        "issues": "https://github.com/laminas-api-tools/api-tools/issues",
-        "source": "https://github.com/laminas-api-tools/api-tools",
-        "rss": "https://github.com/laminas-api-tools/api-tools/releases.atom",
-        "chat": "https://laminas.dev/chat",
-        "forum": "https://discourse.laminas.dev"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "laminas": {
-            "module": "Laminas\\ApiTools"
-        }
-    },
+    "license": "BSD-3-Clause",
     "require": {
         "php": "^5.6 || ^7.0",
         "laminas-api-tools/api-tools-api-problem": "^1.2.1",
@@ -46,6 +30,9 @@
         "laminas/laminas-stdlib": "^2.7.7 || ^3.0.1",
         "laminas/laminas-zendframework-bridge": "^1.0"
     },
+    "replace": {
+        "zfcampus/zf-apigility": "^1.4.0"
+    },
     "require-dev": {
         "laminas/laminas-coding-standard": "~1.0.0",
         "laminas/laminas-http": "^2.5.4",
@@ -55,6 +42,14 @@
         "alcaeus/mongo-php-adapter": "^1.0.5, if you are using ext/mongodb and wish to use the MongoConnectedListener.",
         "laminas-api-tools/api-tools-asset-manager": "^1.0, to install the assets used by api-tools-welcome and/or api-tools-admin-ui, until rwoverdijk/assetmanager 1.7 is released",
         "rwoverdijk/assetmanager": "^1.7, to install the assets used by api-tools-welcome and/or api-tools-admin-ui (may not yet be released)"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laminas": {
+            "module": "Laminas\\ApiTools"
+        }
     },
     "autoload": {
         "psr-4": {
@@ -76,7 +71,12 @@
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
     },
-    "replace": {
-        "zfcampus/zf-apigility": "^1.4.0"
+    "support": {
+        "issues": "https://github.com/laminas-api-tools/api-tools/issues",
+        "forum": "https://discourse.laminas.dev",
+        "chat": "https://laminas.dev/chat",
+        "source": "https://github.com/laminas-api-tools/api-tools",
+        "docs": "https://api-tools.getlaminas.org/documentation",
+        "rss": "https://github.com/laminas-api-tools/api-tools/releases.atom"
     }
 }
