@@ -1,10 +1,6 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace Laminas\ApiTools;
 
@@ -62,8 +58,6 @@ class Application extends MvcApplication
             $result = $events->triggerEventUntil($shortCircuit, $event);
         } catch (Throwable $e) {
             return $this->handleException($e, $event, $events);
-        } catch (Exception $e) {
-            return $this->handleException($e, $event, $events);
         }
 
         if ($result->stopped()) {
@@ -110,8 +104,6 @@ class Application extends MvcApplication
      * Handle an exception/throwable.
      *
      * @param Throwable|Exception $exception
-     * @param MvcEvent $event
-     * @param EventManagerInterface $events
      * @return self
      */
     private function handleException($exception, MvcEvent $event, EventManagerInterface $events)

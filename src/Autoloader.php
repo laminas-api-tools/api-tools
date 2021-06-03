@@ -1,14 +1,13 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace Laminas\ApiTools;
 
 use Laminas\Loader\StandardAutoloader;
+
+use function preg_match;
+use function str_replace;
 
 /**
  * Extends StandardAutoloader to remove "_" as a directory separator
@@ -33,8 +32,8 @@ class Autoloader extends StandardAutoloader
         $matches = [];
         preg_match('/(?P<namespace>.+\\\)?(?P<class>[^\\\]+$)/', $class, $matches);
 
-        $class     = (isset($matches['class'])) ? $matches['class'] : '';
-        $namespace = (isset($matches['namespace'])) ? $matches['namespace'] : '';
+        $class     = $matches['class'] ?? '';
+        $namespace = $matches['namespace'] ?? '';
 
         return $directory
              . str_replace(self::NS_SEPARATOR, '/', $namespace)

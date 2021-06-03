@@ -1,25 +1,26 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace Laminas\ApiTools;
 
 use Interop\Container\ContainerInterface;
+use Laminas\Db\TableGateway\TableGatewayInterface;
 use Laminas\Paginator\Paginator;
 use Laminas\ServiceManager\AbstractFactoryInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\ServiceLocatorInterface;
+
+use function class_exists;
+use function is_array;
+use function is_subclass_of;
+use function sprintf;
 
 class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
 {
     /**
      * Can this factory create the requested service?
      *
-     * @param ContainerInterface $container
      * @param string $requestedName
      * @return bool
      */
@@ -37,7 +38,8 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
 
         $config = $config['api-tools']['db-connected'];
 
-        if (! isset($config[$requestedName])
+        if (
+            ! isset($config[$requestedName])
             || ! is_array($config[$requestedName])
             || ! $this->isValidConfig($config[$requestedName], $requestedName, $container)
         ) {
@@ -52,7 +54,6 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
      *
      * Provided for backwards compatiblity; proxies to canCreate().
      *
-     * @param ServiceLocatorInterface $container
      * @param string $name
      * @param string $requestedName
      * @return bool
@@ -65,12 +66,11 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
     /**
      * Create and return the database-connected resource.
      *
-     * @param ContainerInterface $container
      * @param string $requestedName
      * @param null|array $options
-     * @return \Laminas\ApiTools\Rest\Resource
+     * @return Resource
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $config        = $container->get('config');
         $config        = $config['api-tools']['db-connected'][$requestedName];
@@ -87,10 +87,9 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
      *
      * Provided for backwards compatibility; proxies to __invoke().
      *
-     * @param ServiceLocatorInterface $container
      * @param string $name
      * @param string $requestedName
-     * @return \Laminas\ApiTools\Rest\Resource
+     * @return Resource
      */
     public function createServiceWithName(ServiceLocatorInterface $container, $name, $requestedName)
     {
@@ -107,7 +106,6 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
      *
      * @param  array $config
      * @param  string $requestedName
-     * @param  ContainerInterface $container
      * @return bool
      */
     protected function isValidConfig(array $config, $requestedName, ContainerInterface $container)
@@ -125,8 +123,7 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
      *
      * @param array $config
      * @param string $requestedName
-     * @param ContainerInterface $container
-     * @return \Laminas\Db\TableGateway\TableGatewayInterface
+     * @return TableGatewayInterface
      */
     protected function getTableGatewayFromConfig(array $config, $requestedName, ContainerInterface $container)
     {
@@ -172,12 +169,12 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
      * @param array $config
      * @param string $requestedName
      * @return string
-     * @throws ServiceNotCreatedException if the discovered collection class
+     * @throws ServiceNotCreatedException If the discovered collection class
      *     does not exist.
      */
     protected function getCollectionFromConfig(array $config, $requestedName)
     {
-        $collection = isset($config['collection_class']) ? $config['collection_class'] : Paginator::class;
+        $collection = $config['collection_class'] ?? Paginator::class;
         if (! class_exists($collection)) {
             throw new ServiceNotCreatedException(sprintf(
                 'Unable to create instance for service "%s"; collection class "%s" cannot be found',
@@ -196,14 +193,15 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
      * @param array $config
      * @param string $requestedName
      * @return string
-     * @throws ServiceNotCreatedException if the discovered resource class
+     * @throws ServiceNotCreatedException If the discovered resource class
      *     does not exist or is not a subclass of DbConnectedResource.
      */
     protected function getResourceClassFromConfig(array $config, $requestedName)
     {
         $defaultClass  = DbConnectedResource::class;
-        $resourceClass = isset($config['resource_class']) ? $config['resource_class'] : $defaultClass;
-        if ($resourceClass !== $defaultClass
+        $resourceClass = $config['resource_class'] ?? $defaultClass;
+        if (
+            $resourceClass !== $defaultClass
             && (! class_exists($resourceClass) || ! is_subclass_of($resourceClass, $defaultClass))
         ) {
             throw new ServiceNotCreatedException(sprintf(

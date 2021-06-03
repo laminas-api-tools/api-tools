@@ -1,10 +1,6 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace Laminas\ApiTools;
 
@@ -33,7 +29,6 @@ class Module
      * - Attaches UnauthorizedListener to authorization.post event.
      * - Attaches module render listener to render event.
      *
-     * @param MvcEvent $e
      * @return void
      */
     public function onBootstrap(MvcEvent $e)
@@ -58,13 +53,13 @@ class Module
     /**
      * Attach the ApiProblem render.error listener if a JSON response is detected.
      *
-     * @param MvcEvent $e
      * @return void
      */
     public function onRender(MvcEvent $e)
     {
         $result = $e->getResult();
-        if (! $result instanceof HalJsonModel
+        if (
+            ! $result instanceof HalJsonModel
             && ! $result instanceof JsonModel
         ) {
             return;
