@@ -1,13 +1,10 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace LaminasTest\ApiTools\MvcAuth;
 
+use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
 use Laminas\ApiTools\MvcAuth\MvcAuthEvent;
 use Laminas\ApiTools\MvcAuth\UnauthorizedListener;
 use Laminas\Http\Response;
@@ -24,13 +21,13 @@ class UnauthorizedListenerTest extends TestCase
         $unauthorizedListener = new UnauthorizedListener();
 
         $mvcEvent = new MvcEvent();
-        $mvcEvent->setResponse(new Response);
+        $mvcEvent->setResponse(new Response());
 
         $mvcAuthEvent = new MvcAuthEvent($mvcEvent, null, null);
         $mvcAuthEvent->setIsAuthorized(false);
 
         $invokeResponse = $unauthorizedListener->__invoke($mvcAuthEvent);
-        $this->assertInstanceOf('Laminas\ApiTools\ApiProblem\ApiProblemResponse', $invokeResponse);
+        $this->assertInstanceOf(ApiProblemResponse::class, $invokeResponse);
         $this->assertEquals(403, $invokeResponse->getStatusCode());
         $this->assertEquals('Forbidden', $invokeResponse->getReasonPhrase());
     }

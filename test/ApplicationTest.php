@@ -1,10 +1,6 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace LaminasTest\ApiTools;
 
@@ -16,6 +12,7 @@ use Laminas\Http\PhpEnvironment;
 use Laminas\Mvc\MvcEvent;
 use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
+use Prophecy\Prophecy\ObjectProphecy;
 use ReflectionMethod;
 use ReflectionProperty;
 
@@ -25,7 +22,7 @@ class ApplicationTest extends TestCase
     {
         $events = new EventManager();
 
-        $request = $this->prophesize(PhpEnvironment\Request::class);
+        $request  = $this->prophesize(PhpEnvironment\Request::class);
         $response = $this->prophesize(PhpEnvironment\Response::class);
 
         $this->services = $this->setUpServices(
@@ -71,7 +68,13 @@ class ApplicationTest extends TestCase
         return new Application($services, $events, $request, $response);
     }
 
-    public function setUpServices($services, $events, $request, $response)
+    /**
+     * @param ObjectProphecy&ServiceManager $services
+     * @param ObjectProphecy&PhpEnvironment\Request $request
+     * @param ObjectProphecy&PhpEnvironment\Response $response
+     * @return ObjectProphecy&ServiceManager
+     */
+    public function setUpServices($services, EventManager $events, $request, $response)
     {
         $services->get('config')->willReturn([]);
         $services->get('EventManager')->willReturn($events);
@@ -80,7 +83,11 @@ class ApplicationTest extends TestCase
         return $services;
     }
 
-    public function setUpMvcEvent($app, $request, $response)
+    /**
+     * @param ObjectProphecy&PhpEnvironment\Request $request
+     * @param ObjectProphecy&PhpEnvironment\Response $response
+     */
+    public function setUpMvcEvent(Application $app, $request, $response): Application
     {
         $event = new MvcEvent();
         $event->setTarget($app);

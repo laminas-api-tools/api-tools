@@ -1,10 +1,6 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace LaminasTest\ApiTools;
 
@@ -24,8 +20,10 @@ class DbConnectedResourceTest extends TestCase
         $this->resource = new DbConnectedResource($this->table->reveal(), 'id', ArrayObject::class);
     }
 
-    protected function setInputFilter($resource, $inputFilter)
-    {
+    protected function setInputFilter(
+        DbConnectedResource $resource,
+        InputFilter $inputFilter
+    ): void {
         $r = new ReflectionObject($resource);
         $p = $r->getProperty('inputFilter');
         $p->setAccessible(true);

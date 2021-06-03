@@ -1,29 +1,27 @@
 <?php
 
-/**
- * @see       https://github.com/laminas-api-tools/api-tools for the canonical source repository
- * @copyright https://github.com/laminas-api-tools/api-tools/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas-api-tools/api-tools/blob/master/LICENSE.md New BSD License
- */
+declare(strict_types=1);
 
 namespace Laminas\ApiTools;
 
 use Laminas\Db\Adapter\AdapterAbstractServiceFactory as DbAdapterAbstractServiceFactory;
 use Laminas\ServiceManager\Factory\InvokableFactory;
+use ZF\Apigility\MvcAuth\UnauthenticatedListener;
+use ZF\Apigility\MvcAuth\UnauthorizedListener;
 
 return [
-    'asset_manager' => [
+    'asset_manager'   => [
         'resolver_configs' => [
             'paths' => [
                 __DIR__ . '/../asset',
             ],
         ],
     ],
-    'router' => [
+    'router'          => [
         'routes' => [
             'api-tools' => [
-                'type' => 'literal',
-                'options' => [
+                'type'          => 'literal',
+                'options'       => [
                     'route' => '/api-tools',
                 ],
                 'may_terminate' => false,
@@ -32,13 +30,13 @@ return [
     ],
     'service_manager' => [
         // Legacy Zend Framework aliases
-        'aliases' => [
-            \ZF\Apigility\MvcAuth\UnauthenticatedListener::class => MvcAuth\UnauthenticatedListener::class,
-            \ZF\Apigility\MvcAuth\UnauthorizedListener::class => MvcAuth\UnauthorizedListener::class,
+        'aliases'            => [
+            UnauthenticatedListener::class => MvcAuth\UnauthenticatedListener::class,
+            UnauthorizedListener::class    => MvcAuth\UnauthorizedListener::class,
         ],
-        'factories' => [
+        'factories'          => [
             MvcAuth\UnauthenticatedListener::class => InvokableFactory::class,
-            MvcAuth\UnauthorizedListener::class => InvokableFactory::class,
+            MvcAuth\UnauthorizedListener::class    => InvokableFactory::class,
         ],
         'abstract_factories' => [
             DbAdapterAbstractServiceFactory::class, // so that db-connected works "out-of-the-box"
@@ -46,7 +44,7 @@ return [
             TableGatewayAbstractFactory::class,
         ],
     ],
-    'api-tools' => [
+    'api-tools'       => [
         'db-connected' => [
         // @codingStandardsIgnoreStart
         /*
