@@ -21,34 +21,34 @@ class DbConnectedResourceAbstractFactoryTest extends TestCase
         $this->factory  = new DbConnectedResourceAbstractFactory();
     }
 
-    public function testWillNotCreateServiceIfConfigServiceMissing()
+    public function testWillNotCreateServiceIfConfigServiceMissing(): void
     {
         $this->services->has('config')->willReturn(false);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo'));
     }
 
-    public function testWillNotCreateServiceIfApiToolsConfigMissing()
+    public function testWillNotCreateServiceIfApiToolsConfigMissing(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn([]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo'));
     }
 
-    public function testWillNotCreateServiceIfApiToolsConfigIsNotAnArray()
+    public function testWillNotCreateServiceIfApiToolsConfigIsNotAnArray(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn(['api-tools' => 'invalid']);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo'));
     }
 
-    public function testWillNotCreateServiceIfApiToolsConfigDoesNotHaveDbConnectedSegment()
+    public function testWillNotCreateServiceIfApiToolsConfigDoesNotHaveDbConnectedSegment(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn(['api-tools' => ['foo' => 'bar']]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo'));
     }
 
-    public function testWillNotCreateServiceIfDbConnectedSegmentDoesNotHaveRequestedName()
+    public function testWillNotCreateServiceIfDbConnectedSegmentDoesNotHaveRequestedName(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')

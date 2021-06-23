@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.8.1@f73f2299dbc59a3e6c4d66cff4605176e728ee69">
+  <file src="src/Application.php">
+    <LessSpecificReturnStatement occurrences="3">
+      <code>$this-&gt;completeRequest($event)</code>
+      <code>$this-&gt;completeRequest($event)</code>
+      <code>$this-&gt;completeRequest($event)</code>
+    </LessSpecificReturnStatement>
+    <MissingClosureParamType occurrences="1">
+      <code>$r</code>
+    </MissingClosureParamType>
+    <MixedAssignment occurrences="3">
+      <code>$response</code>
+      <code>$response</code>
+      <code>$response</code>
+    </MixedAssignment>
+    <MoreSpecificReturnType occurrences="2">
+      <code>self</code>
+      <code>self</code>
+    </MoreSpecificReturnType>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>Application</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/DbConnectedResource.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$this-&gt;table</code>
+    </ArgumentTypeCoercion>
+    <DeprecatedClass occurrences="1">
+      <code>new TableGatewayPaginator($this-&gt;table)</code>
+    </DeprecatedClass>
+    <InvalidStringClass occurrences="1">
+      <code>new $this-&gt;collectionClass($adapter)</code>
+    </InvalidStringClass>
+    <LessSpecificReturnStatement occurrences="1">
+      <code>new $this-&gt;collectionClass($adapter)</code>
+    </LessSpecificReturnStatement>
+    <MixedArgument occurrences="1">
+      <code>$id</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="3">
+      <code>$id</code>
+      <code>$item</code>
+      <code>$resultSet</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array|object</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="2">
+      <code>count</code>
+      <code>current</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>$resultSet-&gt;current()</code>
+    </MixedReturnStatement>
+    <MoreSpecificImplementedParamType occurrences="7">
+      <code>$data</code>
+      <code>$data</code>
+      <code>$data</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+    </MoreSpecificImplementedParamType>
+    <MoreSpecificReturnType occurrences="1">
+      <code>Paginator</code>
+    </MoreSpecificReturnType>
+    <ParamNameMismatch occurrences="1">
+      <code>$data</code>
+    </ParamNameMismatch>
+    <PropertyNotSetInConstructor occurrences="4">
+      <code>DbConnectedResource</code>
+      <code>DbConnectedResource</code>
+      <code>DbConnectedResource</code>
+      <code>DbConnectedResource</code>
+    </PropertyNotSetInConstructor>
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>getLastInsertValue</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/DbConnectedResourceAbstractFactory.php">
+    <DeprecatedInterface occurrences="1">
+      <code>DbConnectedResourceAbstractFactory</code>
+    </DeprecatedInterface>
+    <InvalidStringClass occurrences="1">
+      <code>new $resourceClass($table, $identifier, $collection)</code>
+    </InvalidStringClass>
+    <LessSpecificReturnStatement occurrences="1">
+      <code>new $resourceClass($table, $identifier, $collection)</code>
+    </LessSpecificReturnStatement>
+    <MixedArgument occurrences="7">
+      <code>$collection</code>
+      <code>$collection</code>
+      <code>$config</code>
+      <code>$config['table_service']</code>
+      <code>$config['table_service']</code>
+      <code>$resourceClass</code>
+      <code>$resourceClass</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="2">
+      <code>$config['api-tools']</code>
+      <code>$config['api-tools']</code>
+    </MixedArrayAccess>
+    <MixedAssignment occurrences="4">
+      <code>$config</code>
+      <code>$config</code>
+      <code>$config</code>
+      <code>$config</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="2">
+      <code>TableGatewayInterface</code>
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedOperand occurrences="1">
+      <code>$config['table_name']</code>
+    </MixedOperand>
+    <MixedReturnStatement occurrences="4">
+      <code>$config['entity_identifier_name']</code>
+      <code>$config['identifier_name']</code>
+      <code>$container-&gt;get($config['table_service'])</code>
+      <code>$container-&gt;get($tableGatewayService)</code>
+    </MixedReturnStatement>
+    <MoreSpecificReturnType occurrences="1">
+      <code>Resource</code>
+    </MoreSpecificReturnType>
+    <ParamNameMismatch occurrences="2">
+      <code>$container</code>
+      <code>$container</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="src/Model/MongoConnectedListener.php">
+    <MixedArrayAccess occurrences="2">
+      <code>$collection['_id']</code>
+      <code>$result['_id']</code>
+    </MixedArrayAccess>
+    <MixedArrayAssignment occurrences="1">
+      <code>$result['_id']</code>
+    </MixedArrayAssignment>
+    <MixedArrayOffset occurrences="1">
+      <code>$result[$id]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="7">
+      <code>$collection</code>
+      <code>$id</code>
+      <code>$result</code>
+      <code>$result</code>
+      <code>$result</code>
+      <code>$result[$id]</code>
+      <code>$rows</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array|ApiProblem</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$result</code>
+    </MixedReturnStatement>
+    <MoreSpecificImplementedParamType occurrences="5">
+      <code>$data</code>
+      <code>$data</code>
+      <code>$id</code>
+      <code>$id</code>
+      <code>$id</code>
+    </MoreSpecificImplementedParamType>
+    <PropertyNotSetInConstructor occurrences="6">
+      <code>$collection</code>
+      <code>MongoConnectedListener</code>
+      <code>MongoConnectedListener</code>
+      <code>MongoConnectedListener</code>
+      <code>MongoConnectedListener</code>
+      <code>MongoConnectedListener</code>
+    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="6">
+      <code>$e</code>
+      <code>MongoCollection</code>
+      <code>MongoException</code>
+      <code>MongoId</code>
+      <code>MongoId</code>
+      <code>MongoId</code>
+    </UndefinedClass>
+    <UndefinedDocblockClass occurrences="6">
+      <code>$this-&gt;collection</code>
+      <code>$this-&gt;collection</code>
+      <code>$this-&gt;collection</code>
+      <code>$this-&gt;collection</code>
+      <code>$this-&gt;collection</code>
+      <code>MongoCollection</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="src/Module.php">
+    <MixedArgument occurrences="2">
+      <code>$services-&gt;get(MvcAuth\UnauthenticatedListener::class)</code>
+      <code>$services-&gt;get(MvcAuth\UnauthorizedListener::class)</code>
+    </MixedArgument>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="1">
+      <code>attach</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>include __DIR__ . '/../config/module.config.php'</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/MvcAuth/UnauthenticatedListener.php">
+    <PossiblyNullReference occurrences="1">
+      <code>isValid</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/TableGatewayAbstractFactory.php">
+    <DeprecatedInterface occurrences="1">
+      <code>TableGatewayAbstractFactory</code>
+    </DeprecatedInterface>
+    <InvalidStringClass occurrences="1">
+      <code>new $entity()</code>
+    </InvalidStringClass>
+    <MixedArgument occurrences="8">
+      <code>$config['adapter_name']</code>
+      <code>$config['adapter_name']</code>
+      <code>$config['adapter_name']</code>
+      <code>$dbConnectedConfig</code>
+      <code>$entity</code>
+      <code>$entity</code>
+      <code>$restConfig</code>
+      <code>$table</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="4">
+      <code>$config['api-tools']</code>
+      <code>$config['api-tools']</code>
+      <code>$config['api-tools-rest'][$dbConnectedConfig['controller_service_name']]</code>
+      <code>$dbConnectedConfig['table_name']</code>
+    </MixedArrayAccess>
+    <MixedArrayOffset occurrences="2">
+      <code>$config['api-tools-rest'][$dbConnectedConfig['controller_service_name']]</code>
+      <code>$config['api-tools-rest'][$dbConnectedConfig['controller_service_name']]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="9">
+      <code>$config</code>
+      <code>$config</code>
+      <code>$config</code>
+      <code>$dbConnectedConfig</code>
+      <code>$hydratorName</code>
+      <code>$hydrators</code>
+      <code>$restConfig</code>
+      <code>$restConfig</code>
+      <code>$table</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="2">
+      <code>AdapterInterface</code>
+      <code>HydratorInterface</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="1">
+      <code>get</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="4">
+      <code>$container-&gt;get($config['adapter_name'])</code>
+      <code>$container-&gt;get(Adapter::class)</code>
+      <code>$container-&gt;get(AdapterInterface::class)</code>
+      <code>$hydrators-&gt;get($hydratorName)</code>
+    </MixedReturnStatement>
+    <ParamNameMismatch occurrences="2">
+      <code>$container</code>
+      <code>$container</code>
+    </ParamNameMismatch>
+  </file>
+  <file src="test/ApplicationTest.php">
+    <InvalidArgument occurrences="9">
+      <code>$events</code>
+      <code>$request</code>
+      <code>$request</code>
+      <code>$request</code>
+      <code>$response</code>
+      <code>$response</code>
+      <code>$services</code>
+      <code>$this-&gt;prophesize(ServiceManager::class)</code>
+      <code>[]</code>
+    </InvalidArgument>
+    <MissingClosureParamType occurrences="5">
+      <code>$e</code>
+      <code>$e</code>
+      <code>$e</code>
+      <code>$e</code>
+      <code>$e</code>
+    </MissingClosureParamType>
+    <MixedArgument occurrences="3">
+      <code>$request-&gt;reveal()</code>
+      <code>$response-&gt;reveal()</code>
+      <code>$this-&gt;services-&gt;reveal()</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$events</code>
+      <code>$events</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="13">
+      <code>attach</code>
+      <code>attach</code>
+      <code>attach</code>
+      <code>attach</code>
+      <code>attach</code>
+      <code>attach</code>
+      <code>attach</code>
+      <code>getError</code>
+      <code>getEventManager</code>
+      <code>getEventManager</code>
+      <code>getResponse</code>
+      <code>run</code>
+      <code>run</code>
+    </MixedMethodCall>
+    <TooManyArguments occurrences="1">
+      <code>new Application([], $services, $events, $request, $response)</code>
+    </TooManyArguments>
+    <UndefinedThisPropertyAssignment occurrences="2">
+      <code>$this-&gt;app</code>
+      <code>$this-&gt;services</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="2">
+      <code>$this-&gt;app</code>
+      <code>$this-&gt;app</code>
+    </UndefinedThisPropertyFetch>
+    <UnusedClosureParam occurrences="4">
+      <code>$e</code>
+      <code>$e</code>
+      <code>$e</code>
+      <code>$e</code>
+    </UnusedClosureParam>
+  </file>
+  <file src="test/DbConnectedResourceAbstractFactoryTest.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="58">
+      <code>__invoke</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+    </MixedMethodCall>
+    <UndefinedThisPropertyAssignment occurrences="2">
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;services</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="16">
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="test/DbConnectedResourceTest.php">
+    <MixedArgument occurrences="3">
+      <code>$this-&gt;resource</code>
+      <code>$this-&gt;resource</code>
+      <code>$this-&gt;resource</code>
+    </MixedArgument>
+    <MixedMethodCall occurrences="14">
+      <code>getLastInsertValue</code>
+      <code>insert</code>
+      <code>select</code>
+      <code>select</code>
+      <code>select</code>
+      <code>shouldBeCalled</code>
+      <code>shouldBeCalled</code>
+      <code>shouldBeCalled</code>
+      <code>update</code>
+      <code>update</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+    </MixedMethodCall>
+    <UndefinedThisPropertyAssignment occurrences="2">
+      <code>$this-&gt;resource</code>
+      <code>$this-&gt;table</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="6">
+      <code>$this-&gt;resource</code>
+      <code>$this-&gt;resource</code>
+      <code>$this-&gt;resource</code>
+      <code>$this-&gt;table</code>
+      <code>$this-&gt;table</code>
+      <code>$this-&gt;table</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="test/Model/MongoConnectedListenerTest.php">
+    <MixedArgument occurrences="2">
+      <code>$collection</code>
+      <code>MongoClient::VERSION</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="1">
+      <code>$result['_id']</code>
+    </MixedArrayAccess>
+    <MixedAssignment occurrences="3">
+      <code>$collection</code>
+      <code>$m</code>
+      <code>static::$mongoDb</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>null|string|int</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="7">
+      <code>create</code>
+      <code>create</code>
+      <code>delete</code>
+      <code>fetch</code>
+      <code>fetchAll</code>
+      <code>patch</code>
+      <code>selectDB</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>$result['_id']</code>
+    </MixedReturnStatement>
+    <UndefinedClass occurrences="4">
+      <code>MongoClient</code>
+      <code>MongoClient</code>
+      <code>MongoCollection</code>
+      <code>MongoDB</code>
+    </UndefinedClass>
+    <UndefinedDocblockClass occurrences="1">
+      <code>MongoDB</code>
+    </UndefinedDocblockClass>
+    <UndefinedThisPropertyAssignment occurrences="1">
+      <code>$this-&gt;mongoListener</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="6">
+      <code>$this-&gt;mongoListener</code>
+      <code>$this-&gt;mongoListener</code>
+      <code>$this-&gt;mongoListener</code>
+      <code>$this-&gt;mongoListener</code>
+      <code>$this-&gt;mongoListener</code>
+      <code>$this-&gt;mongoListener</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+  <file src="test/TableGatewayAbstractFactoryTest.php">
+    <ArgumentTypeCoercion occurrences="4">
+      <code>$expectedClassName</code>
+      <code>$this-&gt;getClassMethodsHydratorClassName()</code>
+      <code>$this-&gt;getClassMethodsHydratorClassName()</code>
+      <code>$this-&gt;getClassMethodsHydratorClassName()</code>
+    </ArgumentTypeCoercion>
+    <DeprecatedClass occurrences="1">
+      <code>ClassMethods::class</code>
+    </DeprecatedClass>
+    <LessSpecificReturnStatement occurrences="1"/>
+    <MixedMethodCall occurrences="94">
+      <code>__invoke</code>
+      <code>__invoke</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>canCreate</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>get</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>has</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>reveal</code>
+      <code>shouldNotBeCalled</code>
+      <code>shouldNotBeCalled</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+      <code>willReturn</code>
+    </MixedMethodCall>
+    <MoreSpecificReturnType occurrences="1">
+      <code>array&lt;string, array{0: class-string}&gt;</code>
+    </MoreSpecificReturnType>
+    <UndefinedThisPropertyAssignment occurrences="2">
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;services</code>
+    </UndefinedThisPropertyAssignment>
+    <UndefinedThisPropertyFetch occurrences="24">
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;factory</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+      <code>$this-&gt;services</code>
+    </UndefinedThisPropertyFetch>
+  </file>
+</files>

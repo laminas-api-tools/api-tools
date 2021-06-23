@@ -16,7 +16,7 @@ class UnauthorizedListenerTest extends TestCase
     /**
      * @covers \Laminas\ApiTools\MvcAuth\UnauthorizedListener::__invoke
      */
-    public function testInvokePropagates403ResponseWhenAuthenticationHasFailed()
+    public function testInvokePropagates403ResponseWhenAuthenticationHasFailed(): void
     {
         $unauthorizedListener = new UnauthorizedListener();
 

@@ -105,7 +105,7 @@ class ApplicationTest extends TestCase
         return $app;
     }
 
-    public function testRouteListenerRaisingExceptionTriggersDispatchErrorAndSkipsDispatch()
+    public function testRouteListenerRaisingExceptionTriggersDispatchErrorAndSkipsDispatch(): void
     {
         $events   = $this->app->getEventManager();
         $response = $this->prophesize(PhpEnvironment\Response::class)->reveal();
@@ -137,7 +137,7 @@ class ApplicationTest extends TestCase
         $this->assertSame($response, $this->app->getResponse());
     }
 
-    public function testStopPropagationFromPrevEventShouldBeCleared()
+    public function testStopPropagationFromPrevEventShouldBeCleared(): void
     {
         $events   = $this->app->getEventManager();
         $response = $this->prophesize(PhpEnvironment\Response::class)->reveal();

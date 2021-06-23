@@ -50,7 +50,9 @@
         "laminas/laminas-coding-standard": "~2.3.0",
         "laminas/laminas-http": "^2.5.4",
         "phpspec/prophecy-phpunit": "^2.0",
-        "phpunit/phpunit": "^9.3"
+        "phpunit/phpunit": "^9.3",
+        "psalm/plugin-phpunit": "^0.16.1",
+        "vimeo/psalm": "^4.8"
     },
     "suggest": {
         "alcaeus/mongo-php-adapter": "^1.0.5, if you are using ext/mongodb and wish to use the MongoConnectedListener.",
@@ -74,6 +76,7 @@
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
+        "static-analysis": "psalm --shepherd --stats",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
     },
