@@ -21,7 +21,7 @@ class MongoConnectedListenerTest extends TestCase
     /** @var MongoDB */
     protected static $mongoDb;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         if (
             ! (extension_loaded('mongodb') || extension_loaded('mongo'))
@@ -40,14 +40,17 @@ class MongoConnectedListenerTest extends TestCase
         $this->mongoListener = new MongoConnectedListener($collection);
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         if (static::$mongoDb instanceof MongoDB) {
             static::$mongoDb->drop();
         }
     }
 
-    public function testCreate(): string
+    /**
+     * @return null|string|int
+     */
+    public function testCreate()
     {
         $data   = ['foo' => 'bar'];
         $result = $this->mongoListener->create($data);
@@ -56,6 +59,8 @@ class MongoConnectedListenerTest extends TestCase
     }
 
     /**
+     * @param mixed $lastId
+     * @return mixed
      * @depends testCreate
      */
     public function testFetch(string $lastId): string
@@ -73,6 +78,8 @@ class MongoConnectedListenerTest extends TestCase
     }
 
     /**
+     * @param mixed $lastId
+     * @return mixed
      * @depends testFetch
      */
     public function testPatch(string $lastId): string
@@ -88,6 +95,7 @@ class MongoConnectedListenerTest extends TestCase
     }
 
     /**
+     * @param mixed $lastId
      * @depends testPatch
      */
     public function testDelete(string $lastId): void

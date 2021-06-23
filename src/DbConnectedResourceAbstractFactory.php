@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laminas\ApiTools;
 
 use Interop\Container\ContainerInterface;
+use Laminas\ApiTools\Rest\Resource;
 use Laminas\Db\TableGateway\TableGatewayInterface;
 use Laminas\Paginator\Paginator;
 use Laminas\ServiceManager\AbstractFactoryInterface;
@@ -169,8 +170,7 @@ class DbConnectedResourceAbstractFactory implements AbstractFactoryInterface
      * @param array $config
      * @param string $requestedName
      * @return string
-     * @throws ServiceNotCreatedException If the discovered collection class
-     *     does not exist.
+     * @throws ServiceNotCreatedException If the discovered collection class does not exist.
      */
     protected function getCollectionFromConfig(array $config, $requestedName)
     {

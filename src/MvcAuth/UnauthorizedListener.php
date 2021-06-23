@@ -6,7 +6,6 @@ namespace Laminas\ApiTools\MvcAuth;
 
 use Laminas\ApiTools\ApiProblem\ApiProblem;
 use Laminas\ApiTools\ApiProblem\ApiProblemResponse;
-use Laminas\ApiTools\MvcAuth\MvcAuthEvent;
 
 class UnauthorizedListener
 {

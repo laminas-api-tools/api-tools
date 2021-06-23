@@ -9,10 +9,13 @@ use Laminas\ApiTools\DbConnectedResource;
 use Laminas\ApiTools\DbConnectedResourceAbstractFactory;
 use Laminas\Db\TableGateway\TableGateway;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class DbConnectedResourceAbstractFactoryTest extends TestCase
 {
-    protected function setUp()
+    use ProphecyTrait;
+
+    protected function setUp(): void
     {
         $this->services = $this->prophesize(ContainerInterface::class);
         $this->factory  = new DbConnectedResourceAbstractFactory();
@@ -69,6 +72,7 @@ class DbConnectedResourceAbstractFactoryTest extends TestCase
     }
 
     /**
+     * @param array $configForDbConnected
      * @dataProvider invalidConfig
      */
     public function testWillNotCreateServiceIfDbConnectedSegmentIsInvalidConfiguration(
@@ -93,6 +97,7 @@ class DbConnectedResourceAbstractFactoryTest extends TestCase
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo'));
     }
 
+    /** @psalm-return array<string, array{0: array<string, string>, 1: string}> */
     public function validConfig(): array
     {
         return [
@@ -123,6 +128,7 @@ class DbConnectedResourceAbstractFactoryTest extends TestCase
     }
 
     /**
+     * @param array $configForDbConnected
      * @dataProvider validConfig
      */
     public function testFactoryReturnsResourceBasedOnConfiguration(
