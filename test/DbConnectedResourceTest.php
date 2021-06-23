@@ -37,7 +37,7 @@ class DbConnectedResourceTest extends TestCase
         $p->setValue($resource, $inputFilter);
     }
 
-    public function testCreatePullsDataFromComposedInputFilterWhenPresent()
+    public function testCreatePullsDataFromComposedInputFilterWhenPresent(): void
     {
         $filtered = [
             'foo' => 'BAR',
@@ -60,7 +60,7 @@ class DbConnectedResourceTest extends TestCase
         $this->assertEquals($filtered, $this->resource->create(['foo' => 'bar']));
     }
 
-    public function testUpdatePullsDataFromComposedInputFilterWhenPresent()
+    public function testUpdatePullsDataFromComposedInputFilterWhenPresent(): void
     {
         $filtered = [
             'foo' => 'BAR',
@@ -82,7 +82,7 @@ class DbConnectedResourceTest extends TestCase
         $this->assertEquals($filtered, $this->resource->update('foo', ['foo' => 'bar']));
     }
 
-    public function testPatchPullsDataFromComposedInputFilterWhenPresent()
+    public function testPatchPullsDataFromComposedInputFilterWhenPresent(): void
     {
         $filtered = [
             'foo' => 'BAR',

@@ -109,7 +109,7 @@ class MongoConnectedListenerTest extends TestCase
         $this->assertTrue($result);
     }
 
-    public function testFetchAll()
+    public function testFetchAll(): void
     {
         $num = 3;
         for ($i = 0; $i < $num; $i++) {

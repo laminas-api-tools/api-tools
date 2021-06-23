@@ -25,7 +25,7 @@ class AutoloaderTest extends TestCase
     /**
      * @dataProvider classesToAutoload
      */
-    public function testAutoloaderDoesNotTransformUnderscoresToDirectorySeparators(string $className)
+    public function testAutoloaderDoesNotTransformUnderscoresToDirectorySeparators(string $className): void
     {
         $autoloader = new Autoloader([
             'namespaces' => [

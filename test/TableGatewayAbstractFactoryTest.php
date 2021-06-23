@@ -33,55 +33,55 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->factory  = new TableGatewayAbstractFactory();
     }
 
-    public function testWillNotCreateServiceWithoutAppropriateSuffix()
+    public function testWillNotCreateServiceWithoutAppropriateSuffix(): void
     {
         $this->services->has('config')->shouldNotBeCalled();
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo'));
     }
 
-    public function testWillNotCreateServiceIfConfigServiceIsMissing()
+    public function testWillNotCreateServiceIfConfigServiceIsMissing(): void
     {
         $this->services->has('config')->willReturn(false);
         $this->services->get('config')->shouldNotBeCalled();
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
-    public function testWillNotCreateServiceIfMissingApiToolsConfig()
+    public function testWillNotCreateServiceIfMissingApiToolsConfig(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn([]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
-    public function testWillNotCreateServiceIfMissingDbConnectedConfigSegment()
+    public function testWillNotCreateServiceIfMissingDbConnectedConfigSegment(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn(['api-tools' => []]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
-    public function testWillNotCreateServiceIfMissingServiceSubSegment()
+    public function testWillNotCreateServiceIfMissingServiceSubSegment(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn(['api-tools' => ['db-connected' => []]]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
-    public function testWillNotCreateServiceIfServiceSubSegmentIsInvalid()
+    public function testWillNotCreateServiceIfServiceSubSegmentIsInvalid(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn(['api-tools' => ['db-connected' => ['Foo' => 'invalid']]]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
-    public function testWillNotCreateServiceIfServiceSubSegmentDoesNotContainTableName()
+    public function testWillNotCreateServiceIfServiceSubSegmentDoesNotContainTableName(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn(['api-tools' => ['db-connected' => ['Foo' => []]]]);
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
-    public function testWillNotCreateServiceIfServiceSubSegmentDoesNotContainAdapterInformation()
+    public function testWillNotCreateServiceIfServiceSubSegmentDoesNotContainAdapterInformation(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')
@@ -102,7 +102,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
-    public function testWillCreateServiceIfConfigContainsValidTableNameAndAdapterName()
+    public function testWillCreateServiceIfConfigContainsValidTableNameAndAdapterName(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')
@@ -121,7 +121,8 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->assertTrue($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
     }
 
-    public function testWillCreateServiceIfConfigContainsValidTableNameNoAdapterNameAndServicesContainDefaultAdapter()
+    // phpcs:ignore Generic.Files.LineLength.TooLong
+    public function testWillCreateServiceIfConfigContainsValidTableNameNoAdapterNameAndServicesContainDefaultAdapter(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')
@@ -154,7 +155,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
     /**
      * @dataProvider validConfig
      */
-    public function testFactoryReturnsTableGatewayInstanceBasedOnConfiguration(string $adapterServiceName)
+    public function testFactoryReturnsTableGatewayInstanceBasedOnConfiguration(string $adapterServiceName): void
     {
         $hydrator = $this->prophesize($this->getClassMethodsHydratorClassName())->reveal();
 
@@ -208,7 +209,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
      */
     public function testFactoryReturnsTableGatewayInstanceBasedOnConfigurationWithoutLaminasRest(
         string $adapterServiceName
-    ) {
+    ): void {
         $hydrator = $this->prophesize($this->getClassMethodsHydratorClassName())->reveal();
 
         $hydrators = $this->prophesize(HydratorPluginManager::class);

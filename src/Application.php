@@ -41,7 +41,7 @@ class Application extends MvcApplication
         $event  = $this->event;
 
         // Define callback used to determine whether or not to short-circuit
-        $shortCircuit = function ($r) use ($event) {
+        $shortCircuit = function ($r) use ($event): bool {
             if ($r instanceof ResponseInterface) {
                 return true;
             }
