@@ -16,6 +16,7 @@ use Laminas\Hydrator\ClassMethodsHydrator;
 use Laminas\Hydrator\HydratorPluginManager;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 use ReflectionException;
 use ReflectionProperty;
 use Zend\Db\Adapter\Adapter;
@@ -27,6 +28,12 @@ class TableGatewayAbstractFactoryTest extends TestCase
 {
     use ProphecyTrait;
 
+    /** @var ContainerInterface|ObjectProphecy */
+    protected $services;
+
+    /** @var TableGatewayAbstractFactory */
+    protected $factory;
+
     protected function setUp(): void
     {
         $this->services = $this->prophesize(ContainerInterface::class);
@@ -36,49 +43,63 @@ class TableGatewayAbstractFactoryTest extends TestCase
     public function testWillNotCreateServiceWithoutAppropriateSuffix(): void
     {
         $this->services->has('config')->shouldNotBeCalled();
-        $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo'));
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $this->assertFalse($this->factory->canCreate($services, 'Foo'));
     }
 
     public function testWillNotCreateServiceIfConfigServiceIsMissing(): void
     {
         $this->services->has('config')->willReturn(false);
         $this->services->get('config')->shouldNotBeCalled();
-        $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $this->assertFalse($this->factory->canCreate($services, 'Foo\Table'));
     }
 
     public function testWillNotCreateServiceIfMissingApiToolsConfig(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn([]);
-        $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $this->assertFalse($this->factory->canCreate($services, 'Foo\Table'));
     }
 
     public function testWillNotCreateServiceIfMissingDbConnectedConfigSegment(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn(['api-tools' => []]);
-        $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $this->assertFalse($this->factory->canCreate($services, 'Foo\Table'));
     }
 
     public function testWillNotCreateServiceIfMissingServiceSubSegment(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn(['api-tools' => ['db-connected' => []]]);
-        $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $this->assertFalse($this->factory->canCreate($services, 'Foo\Table'));
     }
 
     public function testWillNotCreateServiceIfServiceSubSegmentIsInvalid(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn(['api-tools' => ['db-connected' => ['Foo' => 'invalid']]]);
-        $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $this->assertFalse($this->factory->canCreate($services, 'Foo\Table'));
     }
 
     public function testWillNotCreateServiceIfServiceSubSegmentDoesNotContainTableName(): void
     {
         $this->services->has('config')->willReturn(true);
         $this->services->get('config')->willReturn(['api-tools' => ['db-connected' => ['Foo' => []]]]);
-        $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $this->assertFalse($this->factory->canCreate($services, 'Foo\Table'));
     }
 
     public function testWillNotCreateServiceIfServiceSubSegmentDoesNotContainAdapterInformation(): void
@@ -99,7 +120,9 @@ class TableGatewayAbstractFactoryTest extends TestCase
         $this->services->has(AdapterInterface::class)->willReturn(false);
         $this->services->has(DbAdapter::class)->willReturn(false);
         $this->services->has(Adapter::class)->willReturn(false);
-        $this->assertFalse($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $this->assertFalse($this->factory->canCreate($services, 'Foo\Table'));
     }
 
     public function testWillCreateServiceIfConfigContainsValidTableNameAndAdapterName(): void
@@ -118,7 +141,9 @@ class TableGatewayAbstractFactoryTest extends TestCase
             ]);
 
         $this->services->has('FooAdapter')->willReturn(true);
-        $this->assertTrue($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $this->assertTrue($this->factory->canCreate($services, 'Foo\Table'));
     }
 
     // phpcs:ignore Generic.Files.LineLength.TooLong
@@ -140,7 +165,9 @@ class TableGatewayAbstractFactoryTest extends TestCase
 
         $this->services->has(AdapterInterface::class)->willReturn(false);
         $this->services->has(DbAdapter::class)->willReturn(true);
-        $this->assertTrue($this->factory->canCreate($this->services->reveal(), 'Foo\Table'));
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $this->assertTrue($this->factory->canCreate($services, 'Foo\Table'));
     }
 
     /** @psalm-return array<string, array{0: class-string}> */
@@ -192,8 +219,9 @@ class TableGatewayAbstractFactoryTest extends TestCase
             $config['api-tools']['db-connected']['Foo']['adapter_name'] = $adapterServiceName;
         }
         $this->services->get('config')->willReturn($config);
-
-        $gateway = $this->factory->__invoke($this->services->reveal(), 'Foo\Table');
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $gateway  = $this->factory->__invoke($services, 'Foo\Table');
         $this->assertInstanceOf(TableGateway::class, $gateway);
         $this->assertEquals('foo', $gateway->getTable());
         $this->assertSame($adapter->reveal(), $gateway->getAdapter());
@@ -241,8 +269,9 @@ class TableGatewayAbstractFactoryTest extends TestCase
             $config['api-tools']['db-connected']['Foo']['adapter_name'] = $adapterServiceName;
         }
         $this->services->get('config')->willReturn($config);
-
-        $gateway = $this->factory->__invoke($this->services->reveal(), 'Foo\Table');
+        /** @var ContainerInterface $services */
+        $services = $this->services->reveal();
+        $gateway  = $this->factory->__invoke($services, 'Foo\Table');
         $this->assertInstanceOf(TableGateway::class, $gateway);
         $this->assertEquals('foo', $gateway->getTable());
         $this->assertSame($adapter->reveal(), $gateway->getAdapter());
@@ -258,6 +287,7 @@ class TableGatewayAbstractFactoryTest extends TestCase
      * as ClassMethods from < 3.0.0 is deprecated and triggers an E_USER_DEPRECATED error
      *
      * @return string
+     * @psalm-return class-string
      */
     private function getClassMethodsHydratorClassName()
     {

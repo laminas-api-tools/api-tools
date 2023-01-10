@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaminasTest\ApiTools;
 
 use Exception;
+use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Application;
 use Laminas\EventManager\EventInterface;
 use Laminas\EventManager\EventManager;
@@ -21,6 +22,12 @@ use ReflectionProperty;
 class ApplicationTest extends TestCase
 {
     use ProphecyTrait;
+
+    /** @var ContainerInterface|ObjectProphecy */
+    protected $services;
+
+    /** @var Application */
+    protected $app;
 
     protected function setUp(): void
     {

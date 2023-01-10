@@ -7,6 +7,7 @@ namespace Laminas\ApiTools\Model;
 use Laminas\ApiTools\ApiProblem\ApiProblem;
 use Laminas\ApiTools\Rest\AbstractResourceListener;
 use Laminas\ApiTools\Rest\Exception\CreationException;
+use Laminas\Stdlib\Parameters;
 use MongoCollection;
 use MongoException;
 use MongoId;
@@ -87,7 +88,7 @@ class MongoConnectedListener extends AbstractResourceListener
     /**
      * Fetch all data in a collection
      *
-     * @param  array $params
+     * @param  Parameters|array<array-key, mixed> $params
      * @return array
      */
     public function fetchAll($params = [])

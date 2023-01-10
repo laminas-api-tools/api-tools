@@ -19,4 +19,8 @@
 
     <!-- Include all rules from Laminas Coding Standard -->
     <rule ref="LaminasCodingStandard"/>
+    <rule ref="WebimpressCodingStandard.PHP.CorrectClassNameCase.Invalid">
+        <exclude-pattern>./src/*</exclude-pattern>
+        <exclude-pattern>./test/*</exclude-pattern>
+    </rule>
 </ruleset>

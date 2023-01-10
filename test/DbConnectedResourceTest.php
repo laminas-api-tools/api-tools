@@ -11,12 +11,19 @@ use Laminas\Db\TableGateway\TableGateway;
 use Laminas\InputFilter\InputFilter;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 use ReflectionException;
 use ReflectionObject;
 
 class DbConnectedResourceTest extends TestCase
 {
     use ProphecyTrait;
+
+    /** @var TableGateway|ObjectProphecy */
+    protected $table;
+
+    /** @var DbConnectedResource */
+    protected $resource;
 
     protected function setUp(): void
     {

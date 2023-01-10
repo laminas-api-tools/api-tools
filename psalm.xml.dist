@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <psalm
-        totallyTyped="true"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns="https://getpsalm.org/schema/config"
-        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    errorLevel="1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
     errorBaseline="psalm-baseline.xml"
 >
     <projectFiles>
@@ -28,6 +28,33 @@
                 <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::with"/>
             </errorLevel>
         </InternalMethod>
+
+        <UndefinedClass>
+            <errorLevel type="suppress">
+                <referencedClass name="ZF\Apigility\MvcAuth\UnauthenticatedListener" />
+            </errorLevel>
+            <errorLevel type="suppress">
+                <referencedClass name="ZF\Apigility\MvcAuth\UnauthorizedListener" />
+            </errorLevel>
+        </UndefinedClass>
+
+        <PossiblyUndefinedMethod>
+            <errorLevel type="suppress">
+                <directory name="test"/>
+            </errorLevel>
+        </PossiblyUndefinedMethod>
+
+        <PossiblyInvalidMethodCall>
+            <errorLevel type="suppress">
+                <directory name="test"/>
+            </errorLevel>
+        </PossiblyInvalidMethodCall>
+
+        <UndefinedInterfaceMethod>
+            <errorLevel type="suppress">
+                <referencedMethod name="Laminas\Db\ResultSet\ResultSetInterface::current"/>
+            </errorLevel>
+        </UndefinedInterfaceMethod>
     </issueHandlers>
 
     <plugins>

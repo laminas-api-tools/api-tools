@@ -19,6 +19,9 @@
     },
     "config": {
         "sort-packages": true,
+        "platform": {
+            "php": "8.0.99"
+        },
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
@@ -29,8 +32,8 @@
         }
     },
     "require": {
-        "php": "^7.3 || ~8.0.0 || ~8.1.0 || ~8.2.0",
-        "laminas-api-tools/api-tools-api-problem": "^1.4",
+        "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
+        "laminas-api-tools/api-tools-api-problem": "^1.6",
         "laminas-api-tools/api-tools-content-negotiation": "^1.5",
         "laminas-api-tools/api-tools-content-validation": "^1.9",
         "laminas-api-tools/api-tools-hal": "^1.4.1",
@@ -51,11 +54,11 @@
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "~2.3.0",
-        "laminas/laminas-http": "^2.5.4",
+        "laminas/laminas-http": "^2.18",
         "phpspec/prophecy-phpunit": "^2.0",
-        "phpunit/phpunit": "^9.3",
+        "phpunit/phpunit": "^9.5.27",
         "psalm/plugin-phpunit": "^0.16.1",
-        "vimeo/psalm": "^4.8"
+        "vimeo/psalm": "^4.30"
     },
     "suggest": {
         "alcaeus/mongo-php-adapter": "^1.0.5, if you are using ext/mongodb and wish to use the MongoConnectedListener.",
