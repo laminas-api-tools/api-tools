@@ -29,15 +29,6 @@
             </errorLevel>
         </InternalMethod>
 
-        <UndefinedClass>
-            <errorLevel type="suppress">
-                <referencedClass name="ZF\Apigility\MvcAuth\UnauthenticatedListener" />
-            </errorLevel>
-            <errorLevel type="suppress">
-                <referencedClass name="ZF\Apigility\MvcAuth\UnauthorizedListener" />
-            </errorLevel>
-        </UndefinedClass>
-
         <PossiblyUndefinedMethod>
             <errorLevel type="suppress">
                 <directory name="test"/>
