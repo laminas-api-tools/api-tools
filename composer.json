@@ -34,9 +34,9 @@
     "require": {
         "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
         "laminas-api-tools/api-tools-api-problem": "^1.6",
-        "laminas-api-tools/api-tools-content-negotiation": "^1.5",
+        "laminas-api-tools/api-tools-content-negotiation": "^1.8",
         "laminas-api-tools/api-tools-content-validation": "^1.9",
-        "laminas-api-tools/api-tools-hal": "^1.4.1",
+        "laminas-api-tools/api-tools-hal": "^1.10",
         "laminas-api-tools/api-tools-mvc-auth": "^1.6.0",
         "laminas-api-tools/api-tools-oauth2": "^1.7",
         "laminas-api-tools/api-tools-provider": "^1.4",
