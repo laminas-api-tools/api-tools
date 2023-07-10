@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.8.1@f73f2299dbc59a3e6c4d66cff4605176e728ee69">
+<files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
   <file src="src/Application.php">
     <LessSpecificReturnStatement occurrences="3">
       <code>$this-&gt;completeRequest($event)</code>
@@ -35,24 +35,16 @@
     <LessSpecificReturnStatement occurrences="1">
       <code>new $this-&gt;collectionClass($adapter)</code>
     </LessSpecificReturnStatement>
-    <MixedArgument occurrences="1">
-      <code>$id</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="3">
-      <code>$id</code>
-      <code>$item</code>
-      <code>$resultSet</code>
-    </MixedAssignment>
     <MixedInferredReturnType occurrences="1">
       <code>array|object</code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="2">
-      <code>count</code>
-      <code>current</code>
-    </MixedMethodCall>
     <MixedReturnStatement occurrences="1">
       <code>$resultSet-&gt;current()</code>
     </MixedReturnStatement>
+    <MixedReturnTypeCoercion occurrences="2">
+      <code>(array) $data</code>
+      <code>array&lt;string, mixed&gt;</code>
+    </MixedReturnTypeCoercion>
     <MoreSpecificImplementedParamType occurrences="7">
       <code>$data</code>
       <code>$data</code>
@@ -286,36 +278,12 @@
       <code>$response-&gt;reveal()</code>
       <code>$this-&gt;services-&gt;reveal()</code>
     </MixedArgument>
-    <MixedAssignment occurrences="2">
-      <code>$events</code>
-      <code>$events</code>
-    </MixedAssignment>
-    <MixedMethodCall occurrences="13">
-      <code>attach</code>
-      <code>attach</code>
-      <code>attach</code>
-      <code>attach</code>
-      <code>attach</code>
-      <code>attach</code>
-      <code>attach</code>
+    <MixedMethodCall occurrences="1">
       <code>getError</code>
-      <code>getEventManager</code>
-      <code>getEventManager</code>
-      <code>getResponse</code>
-      <code>run</code>
-      <code>run</code>
     </MixedMethodCall>
     <TooManyArguments occurrences="1">
       <code>new Application([], $services, $events, $request, $response)</code>
     </TooManyArguments>
-    <UndefinedThisPropertyAssignment occurrences="2">
-      <code>$this-&gt;app</code>
-      <code>$this-&gt;services</code>
-    </UndefinedThisPropertyAssignment>
-    <UndefinedThisPropertyFetch occurrences="2">
-      <code>$this-&gt;app</code>
-      <code>$this-&gt;app</code>
-    </UndefinedThisPropertyFetch>
     <UnusedClosureParam occurrences="4">
       <code>$e</code>
       <code>$e</code>
@@ -327,57 +295,7 @@
     <MixedInferredReturnType occurrences="1">
       <code>array</code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="58">
-      <code>__invoke</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
+    <MixedMethodCall occurrences="8">
       <code>willReturn</code>
       <code>willReturn</code>
       <code>willReturn</code>
@@ -387,96 +305,30 @@
       <code>willReturn</code>
       <code>willReturn</code>
     </MixedMethodCall>
-    <UndefinedThisPropertyAssignment occurrences="2">
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;services</code>
-    </UndefinedThisPropertyAssignment>
-    <UndefinedThisPropertyFetch occurrences="16">
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-    </UndefinedThisPropertyFetch>
-  </file>
-  <file src="test/DbConnectedResourceTest.php">
-    <MixedArgument occurrences="3">
-      <code>$this-&gt;resource</code>
-      <code>$this-&gt;resource</code>
-      <code>$this-&gt;resource</code>
-    </MixedArgument>
-    <MixedMethodCall occurrences="14">
-      <code>getLastInsertValue</code>
-      <code>insert</code>
-      <code>select</code>
-      <code>select</code>
-      <code>select</code>
-      <code>shouldBeCalled</code>
-      <code>shouldBeCalled</code>
-      <code>shouldBeCalled</code>
-      <code>update</code>
-      <code>update</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-    </MixedMethodCall>
-    <UndefinedThisPropertyAssignment occurrences="2">
-      <code>$this-&gt;resource</code>
-      <code>$this-&gt;table</code>
-    </UndefinedThisPropertyAssignment>
-    <UndefinedThisPropertyFetch occurrences="6">
-      <code>$this-&gt;resource</code>
-      <code>$this-&gt;resource</code>
-      <code>$this-&gt;resource</code>
-      <code>$this-&gt;table</code>
-      <code>$this-&gt;table</code>
-      <code>$this-&gt;table</code>
-    </UndefinedThisPropertyFetch>
   </file>
   <file src="test/Model/MongoConnectedListenerTest.php">
-    <MixedArgument occurrences="2">
-      <code>$collection</code>
-      <code>MongoClient::VERSION</code>
-    </MixedArgument>
     <MixedArrayAccess occurrences="1">
       <code>$result['_id']</code>
     </MixedArrayAccess>
-    <MixedAssignment occurrences="3">
-      <code>$collection</code>
-      <code>$m</code>
+    <MixedAssignment occurrences="1">
       <code>static::$mongoDb</code>
     </MixedAssignment>
     <MixedInferredReturnType occurrences="1">
       <code>null|string|int</code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="7">
+    <MixedMethodCall occurrences="6">
       <code>create</code>
       <code>create</code>
       <code>delete</code>
       <code>fetch</code>
       <code>fetchAll</code>
       <code>patch</code>
-      <code>selectDB</code>
     </MixedMethodCall>
     <MixedReturnStatement occurrences="1">
       <code>$result['_id']</code>
     </MixedReturnStatement>
-    <UndefinedClass occurrences="4">
+    <UndefinedClass occurrences="2">
       <code>MongoClient</code>
-      <code>MongoClient</code>
-      <code>MongoCollection</code>
       <code>MongoDB</code>
     </UndefinedClass>
     <UndefinedDocblockClass occurrences="1">
@@ -495,97 +347,15 @@
     </UndefinedThisPropertyFetch>
   </file>
   <file src="test/TableGatewayAbstractFactoryTest.php">
-    <ArgumentTypeCoercion occurrences="4">
+    <ArgumentTypeCoercion occurrences="1">
       <code>$expectedClassName</code>
-      <code>$this-&gt;getClassMethodsHydratorClassName()</code>
-      <code>$this-&gt;getClassMethodsHydratorClassName()</code>
-      <code>$this-&gt;getClassMethodsHydratorClassName()</code>
     </ArgumentTypeCoercion>
     <DeprecatedClass occurrences="1">
       <code>ClassMethods::class</code>
     </DeprecatedClass>
     <LessSpecificReturnStatement occurrences="1"/>
-    <MixedMethodCall occurrences="94">
-      <code>__invoke</code>
-      <code>__invoke</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>canCreate</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>get</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>has</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
-      <code>reveal</code>
+    <MixedMethodCall occurrences="15">
       <code>shouldNotBeCalled</code>
-      <code>shouldNotBeCalled</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
-      <code>willReturn</code>
       <code>willReturn</code>
       <code>willReturn</code>
       <code>willReturn</code>
@@ -604,35 +374,5 @@
     <MoreSpecificReturnType occurrences="1">
       <code>array&lt;string, array{0: class-string}&gt;</code>
     </MoreSpecificReturnType>
-    <UndefinedThisPropertyAssignment occurrences="2">
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;services</code>
-    </UndefinedThisPropertyAssignment>
-    <UndefinedThisPropertyFetch occurrences="24">
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;factory</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-      <code>$this-&gt;services</code>
-    </UndefinedThisPropertyFetch>
   </file>
 </files>

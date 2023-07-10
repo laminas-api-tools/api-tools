@@ -98,7 +98,6 @@ class DbConnectedResource extends AbstractResourceListener
         if (0 === $resultSet->count()) {
             throw new DomainException('Item not found', 404);
         }
-        /** @psalm-var array|object */
         return $resultSet->current();
     }
 
@@ -130,7 +129,6 @@ class DbConnectedResource extends AbstractResourceListener
             return $filter->getValues();
         }
 
-        /** @psalm-var array<string, mixed> */
         return (array) $data;
     }
 }
