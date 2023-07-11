@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "158ed85faaad3f083d0e707c25eb0579",
+    "content-hash": "b53a1a287e4fcdc65ba31fb95aabdf98",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -737,35 +737,35 @@
         },
         {
             "name": "laminas-api-tools/api-tools-rpc",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas-api-tools/api-tools-rpc.git",
-                "reference": "929968702eb2a560570e1a64067c1cac562e2349"
+                "reference": "5788d8e7d59694cf3c2a385d71ed0c16700e83a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas-api-tools/api-tools-rpc/zipball/929968702eb2a560570e1a64067c1cac562e2349",
-                "reference": "929968702eb2a560570e1a64067c1cac562e2349",
+                "url": "https://api.github.com/repos/laminas-api-tools/api-tools-rpc/zipball/5788d8e7d59694cf3c2a385d71ed0c16700e83a9",
+                "reference": "5788d8e7d59694cf3c2a385d71ed0c16700e83a9",
                 "shasum": ""
             },
             "require": {
-                "laminas-api-tools/api-tools-api-problem": "^1.3",
-                "laminas-api-tools/api-tools-content-negotiation": "^1.5",
+                "laminas-api-tools/api-tools-api-problem": "^1.6",
+                "laminas-api-tools/api-tools-content-negotiation": "^1.8",
                 "laminas/laminas-eventmanager": "^3.3",
                 "laminas/laminas-http": "^2.14",
                 "laminas/laminas-mvc": "^3.2",
-                "laminas/laminas-servicemanager": "^3.6",
+                "laminas/laminas-servicemanager": "^3.11",
                 "laminas/laminas-stdlib": "^3.3",
                 "laminas/laminas-view": "^2.12",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0"
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
             },
             "conflict": {
                 "zfcampus/zf-rpc": "*"
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.3.0",
-                "phpunit/phpunit": "^9.3",
+                "phpunit/phpunit": "^9.5.10",
                 "psalm/plugin-phpunit": "^0.15.2",
                 "vimeo/psalm": "^4.7"
             },
@@ -806,7 +806,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-07-05T11:22:50+00:00"
+            "time": "2023-07-11T17:02:48+00:00"
         },
         {
             "name": "laminas-api-tools/api-tools-versioning",

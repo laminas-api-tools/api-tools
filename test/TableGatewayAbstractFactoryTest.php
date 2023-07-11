@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace LaminasTest\ApiTools;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\TableGatewayAbstractFactory;
 use Laminas\Db\Adapter\Adapter as DbAdapter;
 use Laminas\Db\Adapter\AdapterInterface as DbAdapterInterface;
@@ -17,6 +16,7 @@ use Laminas\Hydrator\HydratorPluginManager;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
+use Psr\Container\ContainerInterface;
 use ReflectionException;
 use ReflectionProperty;
 use Zend\Db\Adapter\Adapter;
