@@ -40,7 +40,7 @@
         "laminas-api-tools/api-tools-mvc-auth": "^1.8",
         "laminas-api-tools/api-tools-oauth2": "^1.9",
         "laminas-api-tools/api-tools-provider": "^1.4",
-        "laminas-api-tools/api-tools-rest": "^1.6.0",
+        "laminas-api-tools/api-tools-rest": "^1.8",
         "laminas-api-tools/api-tools-rpc": "^1.5",
         "laminas-api-tools/api-tools-versioning": "^1.4",
         "laminas/laminas-db": "^2.8.1",

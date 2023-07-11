@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "002775d2865516c8f13b6568f08afeac",
+    "content-hash": "158ed85faaad3f083d0e707c25eb0579",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -655,29 +655,28 @@
         },
         {
             "name": "laminas-api-tools/api-tools-rest",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas-api-tools/api-tools-rest.git",
-                "reference": "bb7b5323ed505b3cfbd69251f79b8f7a803d898b"
+                "reference": "3cc78408827040d2fc8961e4ea6c5021aae2eec3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas-api-tools/api-tools-rest/zipball/bb7b5323ed505b3cfbd69251f79b8f7a803d898b",
-                "reference": "bb7b5323ed505b3cfbd69251f79b8f7a803d898b",
+                "url": "https://api.github.com/repos/laminas-api-tools/api-tools-rest/zipball/3cc78408827040d2fc8961e4ea6c5021aae2eec3",
+                "reference": "3cc78408827040d2fc8961e4ea6c5021aae2eec3",
                 "shasum": ""
             },
             "require": {
-                "laminas-api-tools/api-tools-api-problem": "^1.4.0",
-                "laminas-api-tools/api-tools-content-negotiation": "^1.5.0",
-                "laminas-api-tools/api-tools-hal": "^1.4",
-                "laminas-api-tools/api-tools-mvc-auth": "^1.6",
+                "laminas-api-tools/api-tools-api-problem": "^1.6.0",
+                "laminas-api-tools/api-tools-content-negotiation": "^1.8.0",
+                "laminas-api-tools/api-tools-hal": "^1.7",
+                "laminas-api-tools/api-tools-mvc-auth": "^1.8",
                 "laminas/laminas-eventmanager": "^3.2",
                 "laminas/laminas-mvc": "^2.7.14 || ^3.0.2",
                 "laminas/laminas-paginator": "^2.7",
                 "laminas/laminas-stdlib": "^2.7.8 || ^3.3",
-                "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0"
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
             },
             "replace": {
                 "zfcampus/zf-rest": "^1.5.0"
@@ -687,12 +686,14 @@
                 "laminas/laminas-escaper": "^2.5.2",
                 "laminas/laminas-http": "^2.5.4",
                 "laminas/laminas-inputfilter": "^2.7.2",
-                "laminas/laminas-servicemanager": "^2.7.6 || ^3.1",
+                "laminas/laminas-servicemanager": "^3.11",
                 "laminas/laminas-uri": "^2.5.2",
                 "laminas/laminas-validator": "^2.8.1",
                 "laminas/laminas-view": "^2.11.3",
                 "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.3"
+                "phpunit/phpunit": "^9.5.10",
+                "psalm/plugin-phpunit": "^0.16.1",
+                "vimeo/psalm": "^4.7"
             },
             "type": "library",
             "extra": {
@@ -732,7 +733,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-06-03T10:44:17+00:00"
+            "time": "2023-07-11T16:53:02+00:00"
         },
         {
             "name": "laminas-api-tools/api-tools-rpc",
