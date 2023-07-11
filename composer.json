@@ -42,7 +42,7 @@
         "laminas-api-tools/api-tools-provider": "^1.4",
         "laminas-api-tools/api-tools-rest": "^1.8",
         "laminas-api-tools/api-tools-rpc": "^1.8",
-        "laminas-api-tools/api-tools-versioning": "^1.4",
+        "laminas-api-tools/api-tools-versioning": "^1.7",
         "laminas/laminas-db": "^2.8.1",
         "laminas/laminas-eventmanager": "^2.6.3 || ^3.0.1",
         "laminas/laminas-loader": "^2.5.1",

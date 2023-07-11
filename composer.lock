@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b53a1a287e4fcdc65ba31fb95aabdf98",
+    "content-hash": "b79328f8e4c3c46e7bfc5a2d86278b10",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -810,16 +810,16 @@
         },
         {
             "name": "laminas-api-tools/api-tools-versioning",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas-api-tools/api-tools-versioning.git",
-                "reference": "f06de7822fe3e3dff60dfcc15263b9005012b3e0"
+                "reference": "f175696276b2f1cfacff71fa00526e79dc8d1fc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas-api-tools/api-tools-versioning/zipball/f06de7822fe3e3dff60dfcc15263b9005012b3e0",
-                "reference": "f06de7822fe3e3dff60dfcc15263b9005012b3e0",
+                "url": "https://api.github.com/repos/laminas-api-tools/api-tools-versioning/zipball/f175696276b2f1cfacff71fa00526e79dc8d1fc4",
+                "reference": "f175696276b2f1cfacff71fa00526e79dc8d1fc4",
                 "shasum": ""
             },
             "require": {
@@ -827,9 +827,9 @@
                 "laminas/laminas-http": "^2.5.4",
                 "laminas/laminas-modulemanager": "^2.7.2",
                 "laminas/laminas-mvc": "^2.7.15 || ^3.0.2",
-                "laminas/laminas-servicemanager": "^2.7.6 || ^3.1",
+                "laminas/laminas-servicemanager": "^3.11",
                 "laminas/laminas-stdlib": "^2.7.7 || ^3.0.1",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0"
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
             },
             "conflict": {
                 "zfcampus/zf-versioning": "*"
@@ -837,7 +837,7 @@
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.3.0",
                 "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.5",
+                "phpunit/phpunit": "^9.5.10",
                 "psalm/plugin-phpunit": "^0.16.1",
                 "vimeo/psalm": "^4.13.1"
             },
@@ -878,7 +878,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-06-28T15:37:03+00:00"
+            "time": "2023-07-11T18:25:42+00:00"
         },
         {
             "name": "laminas/laminas-authentication",
