@@ -14,6 +14,7 @@ use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
+use Psr\Container\ContainerInterface;
 use ReflectionException;
 use ReflectionMethod;
 use ReflectionProperty;
@@ -21,6 +22,10 @@ use ReflectionProperty;
 class ApplicationTest extends TestCase
 {
     use ProphecyTrait;
+
+    protected ContainerInterface|ObjectProphecy $services;
+
+    protected Application $app;
 
     protected function setUp(): void
     {

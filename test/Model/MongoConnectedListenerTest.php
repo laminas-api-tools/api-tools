@@ -26,7 +26,7 @@ class MongoConnectedListenerTest extends TestCase
         if (
             ! (extension_loaded('mongodb') || extension_loaded('mongo'))
             || ! class_exists(MongoClient::class)
-            || version_compare(MongoClient::VERSION, '1.4.1', '<')
+            || version_compare((string) MongoClient::VERSION, '1.4.1', '<')
         ) {
             $this->markTestSkipped(
                 'ext/mongo or ext/mongodb + alcaeus/mongo-php-adapter is not available'

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools;
 
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Rest\Resource;
 use Laminas\Db\TableGateway\TableGatewayInterface;
 use Laminas\Paginator\Paginator;
 use Laminas\ServiceManager\AbstractFactoryInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\ServiceLocatorInterface;
+use Psr\Container\ContainerInterface;
 
 use function class_exists;
 use function is_array;

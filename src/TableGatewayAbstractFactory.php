@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Laminas\ApiTools;
 
-use Interop\Container\ContainerInterface;
 use Laminas\Db\Adapter\Adapter;
 use Laminas\Db\Adapter\AdapterInterface;
 use Laminas\Db\ResultSet\HydratingResultSet;
@@ -13,6 +12,7 @@ use Laminas\Hydrator\HydratorInterface;
 use Laminas\ServiceManager\AbstractFactoryInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\ServiceLocatorInterface;
+use Psr\Container\ContainerInterface;
 use stdClass;
 
 use function class_exists;

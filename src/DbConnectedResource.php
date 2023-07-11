@@ -42,6 +42,7 @@ class DbConnectedResource extends AbstractResourceListener
     {
         $data = $this->retrieveData($data);
         $this->table->insert($data);
+        /** @var int|string $id */
         $id = $this->table->getLastInsertValue();
         return $this->fetch($id);
     }
@@ -119,7 +120,7 @@ class DbConnectedResource extends AbstractResourceListener
      * passed to the method to an array.
      *
      * @param mixed $data
-     * @return array
+     * @return array<string, mixed>
      */
     protected function retrieveData($data)
     {
