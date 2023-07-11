@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1971dcd085e2e780ff41c408b71bcf3d",
+    "content-hash": "38b2f6f75c4fbc74b49d8e783f8238df",
     "packages": [
         {
             "name": "brick/varexporter",
@@ -271,31 +271,31 @@
         },
         {
             "name": "laminas-api-tools/api-tools-content-validation",
-            "version": "1.11.0",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas-api-tools/api-tools-content-validation.git",
-                "reference": "b0969bd7e5ebd323f1ef1f4609408ff516fe69e3"
+                "reference": "f342511d5dc346750eed07bf2337eaf958d76ebe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas-api-tools/api-tools-content-validation/zipball/b0969bd7e5ebd323f1ef1f4609408ff516fe69e3",
-                "reference": "b0969bd7e5ebd323f1ef1f4609408ff516fe69e3",
+                "url": "https://api.github.com/repos/laminas-api-tools/api-tools-content-validation/zipball/f342511d5dc346750eed07bf2337eaf958d76ebe",
+                "reference": "f342511d5dc346750eed07bf2337eaf958d76ebe",
                 "shasum": ""
             },
             "require": {
-                "laminas-api-tools/api-tools-api-problem": "^1.3.0",
-                "laminas-api-tools/api-tools-content-negotiation": "^1.5.0",
+                "laminas-api-tools/api-tools-api-problem": "^1.6",
+                "laminas-api-tools/api-tools-content-negotiation": "^1.8",
                 "laminas/laminas-eventmanager": "^2.6.3 || ^3.0.1",
                 "laminas/laminas-filter": "^2.7.1",
                 "laminas/laminas-http": "^2.5.4",
                 "laminas/laminas-inputfilter": "^2.8",
                 "laminas/laminas-mvc": "^2.7.15 || ^3.0.4",
-                "laminas/laminas-servicemanager": "^2.7.6 || ^3.1",
+                "laminas/laminas-servicemanager": "^3.11",
                 "laminas/laminas-stdlib": "^3.2.1",
                 "laminas/laminas-validator": "^2.8.1",
                 "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^7.3 || ~8.0.0 || ~8.1.0"
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
             },
             "replace": {
                 "zfcampus/zf-content-validation": "^1.8.0"
@@ -345,7 +345,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-01-11T14:13:45+00:00"
+            "time": "2023-07-11T13:01:50+00:00"
         },
         {
             "name": "laminas-api-tools/api-tools-hal",
