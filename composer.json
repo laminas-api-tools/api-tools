@@ -20,7 +20,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "8.0.99"
+            "php": "8.1.99"
         },
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
@@ -32,29 +32,29 @@
         }
     },
     "require": {
-        "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
         "laminas-api-tools/api-tools-api-problem": "^1.6",
         "laminas-api-tools/api-tools-content-negotiation": "^1.8",
         "laminas-api-tools/api-tools-content-validation": "^1.12",
         "laminas-api-tools/api-tools-hal": "^1.10",
         "laminas-api-tools/api-tools-mvc-auth": "^1.8",
         "laminas-api-tools/api-tools-oauth2": "^1.9",
-        "laminas-api-tools/api-tools-provider": "^1.4",
+        "laminas-api-tools/api-tools-provider": "^1.5",
         "laminas-api-tools/api-tools-rest": "^1.8",
         "laminas-api-tools/api-tools-rpc": "^1.8",
         "laminas-api-tools/api-tools-versioning": "^1.7",
-        "laminas/laminas-db": "^2.8.1",
-        "laminas/laminas-eventmanager": "^2.6.3 || ^3.0.1",
-        "laminas/laminas-loader": "^2.5.1",
-        "laminas/laminas-mvc": "^2.7.9 || ^3.0.2",
-        "laminas/laminas-paginator": "^2.7",
-        "laminas/laminas-servicemanager": "^3.11",
-        "laminas/laminas-stdlib": "^2.7.7 || ^3.0.1"
+        "laminas/laminas-db": "^2.13.0",
+        "laminas/laminas-eventmanager": "^2.6.3 || ^3.4.0",
+        "laminas/laminas-loader": "^2.8.0",
+        "laminas/laminas-mvc": "^2.7.9 || ^3.3.0",
+        "laminas/laminas-paginator": "^2.11",
+        "laminas/laminas-servicemanager": "^3.11.1",
+        "laminas/laminas-stdlib": "^2.7.7 || ^3.6.1"
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "~2.3.0",
         "laminas/laminas-http": "^2.18",
-        "phpspec/prophecy-phpunit": "^2.0",
+        "phpspec/prophecy-phpunit": "^2.0.1",
         "phpunit/phpunit": "^9.5.27",
         "psalm/plugin-phpunit": "^0.16.1",
         "vimeo/psalm": "^4.30"
